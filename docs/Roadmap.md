@@ -14,8 +14,8 @@ Squadventure is being developed in phases, each building on the previous to crea
 | Phase 2: Mechanics | ✅ Complete | Combat, dice rolls, character sheets |
 | Phase 2.5: Extended Mechanics | ✅ Complete | Spells, rests, XP, death saves, monsters |
 | Phase 3: Game System Abstraction | ✅ Complete | Extract D&D 5e to configs |
-| **[Phase 4: Procedural Generation](https://github.com/users/ctonyperry/projects/3)** | 🔄 In Progress | Content generators |
-| [Phase 5: World Overlay System](https://github.com/users/ctonyperry/projects/4) | 📋 Planned | Campaign settings |
+| Phase 4: Procedural Generation | ✅ Complete | Content generators |
+| **[Phase 5: World Overlay System](https://github.com/users/ctonyperry/projects/4)** | 📋 Planned | Campaign settings |
 | [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) | 📋 Planned | Agent-driven world creation |
 | [Phase 7: Polish & Scale](https://github.com/users/ctonyperry/projects/6) | 📋 Planned | API, multiplayer, optimization |
 
@@ -110,29 +110,22 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 ---
 
-### [Phase 4: Procedural Generation](https://github.com/users/ctonyperry/projects/3) 🔄 IN PROGRESS
+### Phase 4: Procedural Generation ✅ COMPLETE
 
 **Goal**: Algorithmic content generation for consistent quality
 
-**Planned Components**:
-- **Encounter Generator** - Balanced encounters using CR math
-- **Treasure Generator** - DMG-accurate loot tables
-- **NPC Generator** - Stats + LLM personality
-- **Settlement Generator** - Towns, cities, services
-- **Quest Generator** - Plot templates with complications
+**Completed Components**:
+- ✅ **Session Persistence** - SQLite-backed save/load ([#6](https://github.com/ctonyperry/squadventure/issues/6))
+- ✅ **Conditions Manager** - Status effects system ([#10](https://github.com/ctonyperry/squadventure/issues/10))
+- ✅ **Spell Knowledge Base** - Expanded SRD spells ([#12](https://github.com/ctonyperry/squadventure/issues/12))
+- ✅ **Encounter Calculator** - DMG-accurate CR math ([#13](https://github.com/ctonyperry/squadventure/issues/13))
+- ✅ **Subclass Features** - SRD subclass support ([#14](https://github.com/ctonyperry/squadventure/issues/14))
+- ✅ **Treasure Generator** - DMG-accurate loot tables ([#15](https://github.com/ctonyperry/squadventure/issues/15))
+- ✅ **Environmental Effects** - Hazards, terrain, weather ([#17](https://github.com/ctonyperry/squadventure/issues/17))
 
 **Design Philosophy**: Algorithms generate structure, LLM adds flavor
 
-**Progress**:
-- ✅ [#6: Session Persistence (SQLite)](https://github.com/ctonyperry/squadventure/issues/6) - **Foundational** - Complete
-
-**Issues**:
-- [#10: Conditions Manager (Status Effects)](https://github.com/ctonyperry/squadventure/issues/10)
-- [#12: Expand Spell Knowledge Base](https://github.com/ctonyperry/squadventure/issues/12)
-- [#13: Encounter Difficulty Calculator](https://github.com/ctonyperry/squadventure/issues/13)
-- [#14: Subclass Features](https://github.com/ctonyperry/squadventure/issues/14)
-- [#15: Treasure & Loot Tables](https://github.com/ctonyperry/squadventure/issues/15)
-- [#17: Environmental Effects](https://github.com/ctonyperry/squadventure/issues/17)
+**Deliverable**: Complete procedural generation toolkit for encounters, treasure, and environmental effects
 
 ---
 
@@ -226,16 +219,16 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 | [#5](https://github.com/ctonyperry/squadventure/issues/5) | Monster Stat Blocks | ✅ Closed |
 | [#18](https://github.com/ctonyperry/squadventure/issues/18) | Migrate to GameSystem | ✅ Closed |
 | [#6](https://github.com/ctonyperry/squadventure/issues/6) | Session Persistence (SQLite) | ✅ Closed |
+| [#10](https://github.com/ctonyperry/squadventure/issues/10) | Conditions Manager | ✅ Closed |
+| [#12](https://github.com/ctonyperry/squadventure/issues/12) | Expand Spell Knowledge Base | ✅ Closed |
+| [#13](https://github.com/ctonyperry/squadventure/issues/13) | Encounter Difficulty Calculator | ✅ Closed |
+| [#14](https://github.com/ctonyperry/squadventure/issues/14) | Subclass Features | ✅ Closed |
+| [#15](https://github.com/ctonyperry/squadventure/issues/15) | Treasure & Loot Tables | ✅ Closed |
+| [#17](https://github.com/ctonyperry/squadventure/issues/17) | Environmental Effects | ✅ Closed |
 
 ### Planned Features
 | Issue | Title | Phase |
 |-------|-------|-------|
-| [#10](https://github.com/ctonyperry/squadventure/issues/10) | Conditions Manager | 4 |
-| [#12](https://github.com/ctonyperry/squadventure/issues/12) | Expand Spell Knowledge Base | 4 |
-| [#13](https://github.com/ctonyperry/squadventure/issues/13) | Encounter Difficulty Calculator | 4 |
-| [#14](https://github.com/ctonyperry/squadventure/issues/14) | Subclass Features | 4 |
-| [#15](https://github.com/ctonyperry/squadventure/issues/15) | Treasure & Loot Tables | 4 |
-| [#17](https://github.com/ctonyperry/squadventure/issues/17) | Environmental Effects | 4 |
 | [#19](https://github.com/ctonyperry/squadventure/issues/19) | World Overlay Architecture | 5 |
 | [#20](https://github.com/ctonyperry/squadventure/issues/20) | Terminology Mapping | 5 |
 | [#21](https://github.com/ctonyperry/squadventure/issues/21) | DM Guidance Injection | 5 |
