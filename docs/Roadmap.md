@@ -159,7 +159,10 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 - DM guidance injection for tone
 - Custom monsters, items, spells per setting
 
-**Issues**: None yet - architecture design phase
+**Issues**:
+- [#19: World Overlay Architecture](https://github.com/ctonyperry/squadventure/issues/19)
+- [#20: Terminology Mapping System](https://github.com/ctonyperry/squadventure/issues/20)
+- [#21: DM Guidance Injection](https://github.com/ctonyperry/squadventure/issues/21)
 
 ---
 
@@ -231,6 +234,9 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 | [#14](https://github.com/ctonyperry/squadventure/issues/14) | Subclass Features | 4 |
 | [#15](https://github.com/ctonyperry/squadventure/issues/15) | Treasure & Loot Tables | 4 |
 | [#17](https://github.com/ctonyperry/squadventure/issues/17) | Environmental Effects | 4 |
+| [#19](https://github.com/ctonyperry/squadventure/issues/19) | World Overlay Architecture | 5 |
+| [#20](https://github.com/ctonyperry/squadventure/issues/20) | Terminology Mapping | 5 |
+| [#21](https://github.com/ctonyperry/squadventure/issues/21) | DM Guidance Injection | 5 |
 | [#7](https://github.com/ctonyperry/squadventure/issues/7) | Campaign & Story Arc Types | 6 |
 | [#8](https://github.com/ctonyperry/squadventure/issues/8) | React Dashboard (Zustand) | 6 |
 | [#9](https://github.com/ctonyperry/squadventure/issues/9) | World Generation Agent | 6 |
