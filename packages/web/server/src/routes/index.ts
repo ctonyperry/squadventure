@@ -15,6 +15,7 @@ import type {
   SessionToken,
 } from '../bridge/index.js';
 import { registerAuthRoutes } from './auth.js';
+import { registerRoomRoutes } from './rooms.js';
 
 // =============================================================================
 // Types
@@ -46,6 +47,9 @@ export function setRouteBridge(bridge: GameBridge): void {
 export function registerRoutes(fastify: FastifyInstance): void {
   // Register authentication routes (#26)
   registerAuthRoutes(fastify);
+
+  // Register room routes (#27)
+  registerRoomRoutes(fastify);
 
   // ==========================================================================
   // Session Management API (#25)
