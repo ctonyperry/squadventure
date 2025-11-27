@@ -48,3 +48,4 @@ export {
 } from './system/index.js';
 
 export * from './overlay/index.js';
+export * from './campaign/index.js';

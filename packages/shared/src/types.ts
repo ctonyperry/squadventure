@@ -9,6 +9,10 @@ export type LocationId = string & { readonly __brand: 'LocationId' };
 export type SessionId = string & { readonly __brand: 'SessionId' };
 export type PersonaId = string & { readonly __brand: 'PersonaId' };
 export type SnapshotId = string & { readonly __brand: 'SnapshotId' };
+export type CampaignId = string & { readonly __brand: 'CampaignId' };
+export type ChapterId = string & { readonly __brand: 'ChapterId' };
+export type ObjectiveId = string & { readonly __brand: 'ObjectiveId' };
+export type QuestId = string & { readonly __brand: 'QuestId' };
 
 export function createEntityId(id: string): EntityId {
   return id as EntityId;
@@ -28,6 +32,22 @@ export function createPersonaId(id: string): PersonaId {
 
 export function createSnapshotId(id: string): SnapshotId {
   return id as SnapshotId;
+}
+
+export function createCampaignId(id: string): CampaignId {
+  return id as CampaignId;
+}
+
+export function createChapterId(id: string): ChapterId {
+  return id as ChapterId;
+}
+
+export function createObjectiveId(id: string): ObjectiveId {
+  return id as ObjectiveId;
+}
+
+export function createQuestId(id: string): QuestId {
+  return id as QuestId;
 }
 
 // ============================================================================
@@ -543,6 +563,232 @@ export interface LLMCompletionResponse {
     promptTokens: number;
     completionTokens: number;
     totalTokens: number;
+  };
+}
+
+// ============================================================================
+// Campaign & Story Types
+// ============================================================================
+
+/**
+ * Campaign setting reference - can be a world overlay ID or custom setting
+ */
+export interface CampaignSetting {
+  /** World overlay ID if using an overlay */
+  overlayId?: string;
+  /** Custom setting name */
+  name: string;
+  /** Setting description */
+  description: string;
+  /** Starting location */
+  startingLocationId?: LocationId;
+}
+
+/**
+ * Objective status tracking
+ */
+export type ObjectiveStatus = 'unknown' | 'discovered' | 'active' | 'completed' | 'failed' | 'abandoned';
+
+/**
+ * Objective type classification
+ */
+export type ObjectiveType = 'main' | 'side' | 'hidden' | 'bonus';
+
+/**
+ * Rewards for completing objectives
+ */
+export interface ObjectiveReward {
+  /** XP reward */
+  xp?: number;
+  /** Gold reward */
+  gold?: number;
+  /** Item rewards (entity IDs) */
+  items?: EntityId[];
+  /** Faction reputation changes */
+  reputation?: Array<{
+    factionId: EntityId;
+    change: number;
+  }>;
+  /** Custom reward description */
+  custom?: string;
+}
+
+/**
+ * Single objective within a quest or chapter
+ */
+export interface Objective {
+  id: ObjectiveId;
+  /** Short title */
+  title: string;
+  /** Full description */
+  description: string;
+  /** Objective classification */
+  type: ObjectiveType;
+  /** Current status */
+  status: ObjectiveStatus;
+  /** IDs of objectives that must be completed first */
+  prerequisites?: ObjectiveId[];
+  /** Rewards for completion */
+  rewards?: ObjectiveReward;
+  /** Optional progress tracking (0-100) */
+  progress?: number;
+  /** Optional hint for players */
+  hint?: string;
+  /** Whether this objective has been revealed to players */
+  isRevealed: boolean;
+}
+
+/**
+ * Quest - a standalone story unit with objectives
+ */
+export interface Quest {
+  id: QuestId;
+  /** Quest name */
+  name: string;
+  /** Quest description/summary */
+  description: string;
+  /** NPC who gave this quest */
+  questGiverId?: EntityId;
+  /** Location where quest was received */
+  originLocationId?: LocationId;
+  /** Quest objectives */
+  objectives: Objective[];
+  /** Overall quest status */
+  status: ObjectiveStatus;
+  /** Chapter this quest belongs to */
+  chapterId?: ChapterId;
+  /** Is this a main story quest? */
+  isMainQuest: boolean;
+  /** Recommended level range */
+  levelRange?: { min: number; max: number };
+  /** Tags for categorization */
+  tags?: string[];
+  /** When the quest was started */
+  startedAt?: Date;
+  /** When the quest was completed/failed */
+  endedAt?: Date;
+}
+
+/**
+ * Chapter - major story segment
+ */
+export interface Chapter {
+  id: ChapterId;
+  /** Chapter number for ordering */
+  number: number;
+  /** Chapter name */
+  name: string;
+  /** Synopsis of what happens in this chapter */
+  synopsis: string;
+  /** Key objectives to complete the chapter */
+  objectives: Objective[];
+  /** Key locations featured in this chapter */
+  keyLocations: LocationId[];
+  /** Key NPCs featured in this chapter */
+  keyNPCs: EntityId[];
+  /** Suggested player level for this chapter */
+  suggestedLevel: number;
+  /** Quests available in this chapter */
+  questIds: QuestId[];
+  /** Chapter completion status */
+  status: 'locked' | 'active' | 'completed';
+  /** Requirements to unlock this chapter */
+  prerequisites?: {
+    completedChapters?: ChapterId[];
+    completedObjectives?: ObjectiveId[];
+    minLevel?: number;
+  };
+}
+
+/**
+ * Major plot decision tracked for story branching
+ */
+export interface PlotDecision {
+  id: string;
+  /** Description of the decision point */
+  description: string;
+  /** The choice made */
+  choice: string;
+  /** When the decision was made */
+  timestamp: Date;
+  /** Which chapter this occurred in */
+  chapterId?: ChapterId;
+  /** Consequences of this decision */
+  consequences?: string[];
+  /** Affected entities */
+  affectedEntities?: EntityId[];
+}
+
+/**
+ * Story state tracking major narrative elements
+ */
+export interface StoryState {
+  /** Current chapter being played */
+  currentChapterId?: ChapterId;
+  /** All chapters in the campaign */
+  chapters: Chapter[];
+  /** All quests (active and completed) */
+  quests: Quest[];
+  /** Major plot decisions made */
+  decisions: PlotDecision[];
+  /** Faction reputation tracking */
+  factionReputation: Record<string, number>;
+  /** Story flags for conditional content */
+  storyFlags: Record<string, boolean>;
+  /** Story counters for tracking */
+  storyCounters: Record<string, number>;
+  /** Known lore entries (discovered by players) */
+  discoveredLore: string[];
+}
+
+/**
+ * Complete campaign definition
+ */
+export interface Campaign {
+  id: CampaignId;
+  /** Campaign name */
+  name: string;
+  /** Campaign description/premise */
+  description: string;
+  /** Long-form introduction for players */
+  introduction: string;
+  /** Campaign setting information */
+  setting: CampaignSetting;
+  /** Recommended level range for the campaign */
+  levelRange: { min: number; max: number };
+  /** Chapters in order */
+  chapters: Chapter[];
+  /** Associated world state ID */
+  worldStateId: string;
+  /** Story state tracking */
+  storyState: StoryState;
+  /** Campaign metadata */
+  metadata: {
+    author?: string;
+    version: string;
+    tags?: string[];
+    estimatedSessions?: number;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+}
+
+/**
+ * Campaign summary for listings/selection
+ */
+export interface CampaignSummary {
+  id: CampaignId;
+  name: string;
+  description: string;
+  levelRange: { min: number; max: number };
+  chapterCount: number;
+  questCount: number;
+  tags?: string[];
+  progress?: {
+    currentChapter: number;
+    totalChapters: number;
+    completedQuests: number;
+    totalQuests: number;
   };
 }
 
