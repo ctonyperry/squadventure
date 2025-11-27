@@ -49,3 +49,4 @@ export {
 
 export * from './overlay/index.js';
 export * from './campaign/index.js';
+export * from './npc/index.js';
