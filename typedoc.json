@@ -18,7 +18,7 @@
   "name": "Squadventure API",
   "includeVersion": false,
   "navigationLinks": {
-    "Wiki": "/docs/wiki/Home.md",
+    "Wiki": "../wiki/Home.md",
     "GitHub": "https://github.com/ctonyperry/squadventure"
   }
 }
