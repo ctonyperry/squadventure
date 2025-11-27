@@ -1,0 +1,85 @@
+name: Feature Request
+description: Propose a new feature for Squadventure
+title: "[Feature]: "
+labels: ["type:feature", "status:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Use this template to propose new features. Be specific so agents can pick up and implement.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Brief description of the feature
+      placeholder: What does this feature do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: Detailed requirements and specifications
+      placeholder: |
+        ### Data Structures
+        - What types/interfaces need to be added?
+
+        ### Logic
+        - What behavior should be implemented?
+
+        ### DM Tools
+        - What tools should the DM have access to?
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: Technical Notes
+      description: Implementation guidance
+      placeholder: |
+        - Which packages/files to modify
+        - Patterns to follow
+        - Dependencies
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know when this is done?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Build passes with no type errors
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - combat
+        - inventory
+        - character
+        - magic
+        - world
+        - infrastructure
+    validations:
+      required: false
