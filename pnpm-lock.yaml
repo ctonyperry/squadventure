@@ -156,6 +156,28 @@ importers:
         specifier: ^5.6.0
         version: 5.9.3
 
+  packages/world-gen:
+    dependencies:
+      '@ai-dm/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@ai-dm/infrastructure':
+        specifier: workspace:*
+        version: link:../infrastructure
+      '@ai-dm/shared':
+        specifier: workspace:*
+        version: link:../shared
+      zod:
+        specifier: ^3.25.0
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: ^20.10.0
+        version: 20.19.25
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+
 packages:
 
   '@babel/code-frame@7.27.1':

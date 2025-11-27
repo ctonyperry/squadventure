@@ -16,7 +16,7 @@ Squadventure is being developed in phases, each building on the previous to crea
 | Phase 3: Game System Abstraction | ✅ Complete | Extract D&D 5e to configs |
 | Phase 4: Procedural Generation | ✅ Complete | Content generators |
 | Phase 5: World Overlay System | ✅ Complete | Campaign settings |
-| **[Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5)** | 📋 Planned | Agent-driven world creation |
+| **[Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5)** | ✅ Complete | Agent-driven world creation |
 | [Phase 7: Polish & Scale](https://github.com/users/ctonyperry/projects/6) | 📋 Planned | API, multiplayer, optimization |
 
 ---
@@ -169,22 +169,37 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 ---
 
-### [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) 🔄 IN PROGRESS
+### [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) ✅ COMPLETE
 
 **Goal**: Agent-driven complete world creation
 
 **Completed**:
 - ✅ **Campaign & Story Arc Types** - Full campaign management system ([#7](https://github.com/ctonyperry/squadventure/issues/7))
 - ✅ **NPC Memory & Relationships** - Relationship tracking and faction intelligence ([#16](https://github.com/ctonyperry/squadventure/issues/16))
+- ✅ **React Dashboard** - Web-based game state visualization ([#8](https://github.com/ctonyperry/squadventure/issues/8))
+- ✅ **World Generation Agent** - Layered world creation pipeline ([#9](https://github.com/ctonyperry/squadventure/issues/9))
 
-**Remaining**:
-- [#8: React Dashboard for Game State Visibility](https://github.com/ctonyperry/squadventure/issues/8)
-- [#9: World Generation Agent Architecture](https://github.com/ctonyperry/squadventure/issues/9)
+**Architecture**:
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    DESIGN PHASE                              │
+│  [User Brief] → [World Gen Agent] → [World Template]        │
+│                                                              │
+│  - Iterative generation (geography → factions → NPCs → plots)│
+│  - Validation at each step                                   │
+│  - Human review/editing via Dashboard                        │
+└─────────────────────────────────────────────────────────────┘
+```
 
-**Future Components**:
-- RAG infrastructure (pgvector, embeddings)
-- Campaign structure generator (arcs, BBEG, factions)
-- World population using procedural generators
+**Generation Layers**:
+1. World Foundation (setting, history, magic level)
+2. Factions & Power (political landscape, conflicts)
+3. Locations (settlements, dungeons, travel network)
+4. NPCs (characters, relationships, knowledge)
+5. Campaign Arc (chapters, story beats, endings)
+6. Encounters & Rewards (combat, treasure, random tables)
+
+**Deliverable**: Complete world generation pipeline with validation
 
 ---
 

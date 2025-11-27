@@ -1,0 +1,27 @@
+{
+  "name": "@ai-dm/world-gen",
+  "version": "0.1.0",
+  "description": "World generation agent for AI Dungeon Master",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "world-gen": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "generate": "node dist/cli.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-dm/shared": "workspace:*",
+    "@ai-dm/domain": "workspace:*",
+    "@ai-dm/infrastructure": "workspace:*",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.6.0"
+  }
+}
