@@ -3,7 +3,7 @@
  * Each archetype has different play styles and generates appropriate actions
  */
 
-import type { PlayerProfile } from '@ai-dm/shared';
+import type { PlayerGamePreferences } from '@ai-dm/shared';
 
 /**
  * Base player archetype definition
@@ -12,7 +12,7 @@ export interface PlayerArchetype {
   id: string;
   name: string;
   description: string;
-  profile: PlayerProfile;
+  profile: PlayerGamePreferences;
   actionPatterns: ActionPattern[];
   conversationStyle: ConversationStyle;
 }

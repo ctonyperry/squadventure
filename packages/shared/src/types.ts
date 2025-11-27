@@ -13,6 +13,7 @@ export type CampaignId = string & { readonly __brand: 'CampaignId' };
 export type ChapterId = string & { readonly __brand: 'ChapterId' };
 export type ObjectiveId = string & { readonly __brand: 'ObjectiveId' };
 export type QuestId = string & { readonly __brand: 'QuestId' };
+export type PlayerId = string & { readonly __brand: 'PlayerId' };
 
 export function createEntityId(id: string): EntityId {
   return id as EntityId;
@@ -48,6 +49,10 @@ export function createObjectiveId(id: string): ObjectiveId {
 
 export function createQuestId(id: string): QuestId {
   return id as QuestId;
+}
+
+export function createPlayerId(id: string): PlayerId {
+  return id as PlayerId;
 }
 
 // ============================================================================
@@ -336,6 +341,149 @@ export interface CharacterSheet {
 }
 
 // ============================================================================
+// Player Identity Types
+// ============================================================================
+
+/**
+ * Player roles within a session
+ */
+export type PlayerRole = 'dm' | 'player' | 'spectator';
+
+/**
+ * Player authentication status
+ */
+export type PlayerAuthStatus = 'guest' | 'registered' | 'authenticated';
+
+/**
+ * Player preferences for game experience
+ */
+export interface PlayerPreferences {
+  /** Preferred name to display */
+  displayName: string;
+  /** Avatar URL or identifier */
+  avatarUrl?: string;
+  /** Color for player identification */
+  color?: string;
+  /** Notification preferences */
+  notifications: {
+    turnReminders: boolean;
+    combatAlerts: boolean;
+    chatMessages: boolean;
+  };
+  /** UI preferences */
+  ui: {
+    diceAnimations: boolean;
+    soundEffects: boolean;
+    darkMode: boolean;
+  };
+}
+
+/**
+ * Player profile information
+ */
+export interface PlayerProfile {
+  id: PlayerId;
+  /** Unique username for registered players */
+  username?: string;
+  /** Display name shown to others */
+  displayName: string;
+  /** Player's avatar URL */
+  avatarUrl?: string;
+  /** Authentication status */
+  authStatus: PlayerAuthStatus;
+  /** Account creation date (for registered users) */
+  createdAt?: Date;
+  /** Last login date */
+  lastSeenAt: Date;
+  /** Player preferences */
+  preferences: PlayerPreferences;
+  /** Statistics across sessions */
+  stats?: PlayerStats;
+}
+
+/**
+ * Player statistics (optional tracking)
+ */
+export interface PlayerStats {
+  sessionsPlayed: number;
+  totalPlayTimeMinutes: number;
+  characterCount: number;
+  diceRolls: number;
+  criticalHits: number;
+  criticalMisses: number;
+}
+
+/**
+ * Player's role and permissions within a specific session
+ */
+export interface SessionPlayer {
+  playerId: PlayerId;
+  displayName: string;
+  role: PlayerRole;
+  /** ID of controlled character(s) for players */
+  characterIds: EntityId[];
+  /** Whether the player is currently connected */
+  isConnected: boolean;
+  /** When the player joined the session */
+  joinedAt: Date;
+  /** Permissions specific to this session */
+  permissions: SessionPermissions;
+}
+
+/**
+ * Session-specific permissions
+ */
+export interface SessionPermissions {
+  /** Can send chat messages */
+  canChat: boolean;
+  /** Can execute game commands */
+  canCommand: boolean;
+  /** Can control NPCs (DM only typically) */
+  canControlNPCs: boolean;
+  /** Can modify world state (DM only typically) */
+  canModifyWorld: boolean;
+  /** Can invite other players */
+  canInvite: boolean;
+  /** Can kick players (DM only typically) */
+  canKick: boolean;
+  /** Can pause/resume session */
+  canPauseSession: boolean;
+}
+
+/**
+ * Default permissions by role
+ */
+export const DEFAULT_PERMISSIONS: Record<PlayerRole, SessionPermissions> = {
+  dm: {
+    canChat: true,
+    canCommand: true,
+    canControlNPCs: true,
+    canModifyWorld: true,
+    canInvite: true,
+    canKick: true,
+    canPauseSession: true,
+  },
+  player: {
+    canChat: true,
+    canCommand: true,
+    canControlNPCs: false,
+    canModifyWorld: false,
+    canInvite: false,
+    canKick: false,
+    canPauseSession: false,
+  },
+  spectator: {
+    canChat: true,
+    canCommand: false,
+    canControlNPCs: false,
+    canModifyWorld: false,
+    canInvite: false,
+    canKick: false,
+    canPauseSession: false,
+  },
+};
+
+// ============================================================================
 // Session Types
 // ============================================================================
 
@@ -397,7 +545,7 @@ export interface CombatParticipant {
   conditions: string[];
 }
 
-export interface PlayerProfile {
+export interface PlayerGamePreferences {
   experienceLevel: 'new' | 'casual' | 'veteran';
   playStyle: {
     prefersRoleplay: number;
@@ -491,7 +639,7 @@ export interface GameSession {
   playerCharacters: CharacterSheet[];
   conversationHistory: Turn[];
   combat?: CombatState;
-  playerProfile: PlayerProfile;
+  gamePreferences: PlayerGamePreferences;
   createdAt: Date;
   updatedAt: Date;
 }

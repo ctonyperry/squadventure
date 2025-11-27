@@ -24,7 +24,7 @@ export interface SerializedSession {
       role: Turn['role'];
       content: string;
     }>;
-    playerProfile: GameSession['playerProfile'];
+    gamePreferences: GameSession['gamePreferences'];
     combat?: CombatState;
     createdAt: string;
     updatedAt: string;
@@ -79,7 +79,7 @@ export class SessionStore {
         role: turn.role,
         content: turn.content,
       })),
-      playerProfile: session.playerProfile,
+      gamePreferences: session.gamePreferences,
       createdAt: session.createdAt.toISOString(),
       updatedAt: session.updatedAt.toISOString(),
     };
@@ -123,7 +123,7 @@ export class SessionStore {
           role: turn.role,
           content: turn.content,
         })),
-        playerProfile: data.session.playerProfile,
+        gamePreferences: data.session.gamePreferences,
         createdAt: new Date(data.session.createdAt),
         updatedAt: new Date(data.session.updatedAt),
       };

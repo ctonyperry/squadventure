@@ -12,20 +12,14 @@ import type {
   Turn,
   CombatState,
   DiceRoll,
+  PlayerId,
 } from '@ai-dm/shared';
+export { createPlayerId } from '@ai-dm/shared';
+export type { PlayerId } from '@ai-dm/shared';
 
 // =============================================================================
 // Session Types
 // =============================================================================
-
-/**
- * Unique identifier for a player/client
- */
-export type PlayerId = string & { readonly __brand: 'PlayerId' };
-
-export function createPlayerId(id: string): PlayerId {
-  return id as PlayerId;
-}
 
 /**
  * Session token for authentication

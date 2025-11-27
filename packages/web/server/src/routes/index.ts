@@ -6,7 +6,7 @@
 
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import type { SessionId } from '@ai-dm/shared';
-import { createSessionId } from '@ai-dm/shared';
+import { createSessionId, createPlayerId } from '@ai-dm/shared';
 import type {
   GameBridge,
   CreateSessionConfig,
@@ -14,7 +14,7 @@ import type {
   PlayerId,
   SessionToken,
 } from '../bridge/index.js';
-import { createPlayerId } from '../bridge/index.js';
+import { registerAuthRoutes } from './auth.js';
 
 // =============================================================================
 // Types
@@ -44,6 +44,9 @@ export function setRouteBridge(bridge: GameBridge): void {
  * Register all REST routes
  */
 export function registerRoutes(fastify: FastifyInstance): void {
+  // Register authentication routes (#26)
+  registerAuthRoutes(fastify);
+
   // ==========================================================================
   // Session Management API (#25)
   // ==========================================================================

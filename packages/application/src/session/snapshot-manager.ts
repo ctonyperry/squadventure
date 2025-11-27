@@ -32,7 +32,7 @@ export class SnapshotManager {
       personaId: session.personaId,
       currentScene: session.currentScene,
       playerCharacters: session.playerCharacters,
-      playerProfile: session.playerProfile,
+      gamePreferences: session.gamePreferences,
       createdAt: session.createdAt,
       updatedAt: session.updatedAt,
     };

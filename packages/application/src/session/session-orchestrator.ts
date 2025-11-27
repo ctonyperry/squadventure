@@ -8,7 +8,7 @@ import type {
   SessionId,
   PersonaId,
   Scene,
-  PlayerProfile,
+  PlayerGamePreferences,
   EntityId,
   CombatState,
 } from '@ai-dm/shared';
@@ -63,7 +63,7 @@ export interface SessionOrchestratorConfig {
   worldState: WorldState;
   persona: DMPersona;
   startingLocationId: LocationId;
-  playerProfile?: PlayerProfile;
+  gamePreferences?: PlayerGamePreferences;
   events?: SessionEvents;
   maxToolIterations?: number;
 }
@@ -122,7 +122,7 @@ export class SessionOrchestrator {
       currentScene: scene,
       playerCharacters: [],
       conversationHistory: [],
-      playerProfile: config.playerProfile ?? {
+      gamePreferences: config.gamePreferences ?? {
         experienceLevel: 'casual',
         playStyle: {
           prefersRoleplay: 0.5,
@@ -289,7 +289,7 @@ export class SessionOrchestrator {
       currentScene: snapshot.sessionState.currentScene,
       playerCharacters: snapshot.sessionState.playerCharacters,
       conversationHistory: [...snapshot.turnLog],
-      playerProfile: snapshot.sessionState.playerProfile,
+      gamePreferences: snapshot.sessionState.gamePreferences,
       createdAt: snapshot.sessionState.createdAt,
       updatedAt: new Date(),
     };

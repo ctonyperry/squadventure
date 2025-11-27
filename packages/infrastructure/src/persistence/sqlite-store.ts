@@ -77,7 +77,7 @@ interface SerializableSession {
   personaId: string;
   currentScene: GameSession['currentScene'];
   playerCharacters: GameSession['playerCharacters'];
-  playerProfile: GameSession['playerProfile'];
+  gamePreferences: GameSession['gamePreferences'];
   combat?: CombatState;
   createdAt: string;
   updatedAt: string;
@@ -638,7 +638,7 @@ export class SQLiteGameStore {
       personaId: session.personaId,
       currentScene: session.currentScene,
       playerCharacters: session.playerCharacters,
-      playerProfile: session.playerProfile,
+      gamePreferences: session.gamePreferences,
       createdAt: session.createdAt.toISOString(),
       updatedAt: session.updatedAt.toISOString(),
     };
@@ -658,7 +658,7 @@ export class SQLiteGameStore {
       currentScene: data.currentScene,
       playerCharacters: data.playerCharacters,
       conversationHistory: turns,
-      playerProfile: data.playerProfile,
+      gamePreferences: data.gamePreferences,
       createdAt: new Date(data.createdAt),
       updatedAt: new Date(data.updatedAt),
     };
