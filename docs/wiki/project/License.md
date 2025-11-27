@@ -1,32 +1,34 @@
 # License
 
-Squadventure is released under the MIT License with acknowledgment of the Open Gaming License for D&D 5e SRD content.
+Squadventure is released under the **Business Source License 1.1** with acknowledgment of the Open Gaming License for D&D 5e SRD content.
 
-## MIT License
+## Business Source License 1.1
 
 ```
-MIT License
+Business Source License 1.1
 
-Copyright (c) 2024 Squadventure Contributors
+Licensor:             Tony Perry
+Licensed Work:        Squadventure
+                      The Licensed Work is (c) 2024 Tony Perry.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Additional Use Grant: You may make use of the Licensed Work for personal,
+                      non-commercial, educational, or evaluation purposes.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Change Date:          November 27, 2028
+Change License:       Apache License, Version 2.0
 ```
+
+### What This Means
+
+| Use Case | Allowed? |
+|----------|----------|
+| Personal projects | ✅ Yes |
+| Learning/Education | ✅ Yes |
+| Evaluation/Testing | ✅ Yes |
+| Commercial/Production | ❌ Requires license |
+| After Nov 27, 2028 | ✅ Apache 2.0 (fully open) |
+
+For commercial licensing inquiries, please [open an issue](https://github.com/ctonyperry/squadventure/issues) or contact the licensor.
 
 ## Open Gaming License
 
@@ -49,7 +51,7 @@ This product includes Open Game Content from the Systems Reference Document 5.1 
 
 ### What This Means
 
-1. **The code** is MIT licensed - do whatever you want with it
+1. **The code** is BSL 1.1 licensed - free for personal/educational use, commercial use requires license
 2. **The D&D rules content** (races, classes, spells, monsters from SRD) follows OGL requirements
 3. **Your game sessions** and AI-generated content are yours
 
@@ -76,7 +78,7 @@ For a complete list, see `package.json` in each package directory.
 
 ## Contributing
 
-By contributing to Squadventure, you agree that your contributions will be licensed under the MIT License.
+By contributing to Squadventure, you agree that your contributions will be licensed under the Business Source License 1.1.
 
 ## Questions?
 
