@@ -277,6 +277,15 @@ export interface HitDice {
   dieType: 6 | 8 | 10 | 12;
 }
 
+export interface DeathSaves {
+  /** Number of successful death saves (0-3) */
+  successes: number;
+  /** Number of failed death saves (0-3) */
+  failures: number;
+  /** Whether the character is stable (unconscious but not dying) */
+  stable: boolean;
+}
+
 export interface CharacterExperience {
   /** Current XP total */
   current: number;
@@ -296,6 +305,7 @@ export interface CharacterSheet {
   inventory: CharacterInventory;
   spellcasting?: CharacterSpellcasting;
   hitDice: HitDice;
+  deathSaves?: DeathSaves;
   features: string[];
   proficiencies: {
     armor: string[];
