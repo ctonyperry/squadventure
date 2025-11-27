@@ -17,6 +17,8 @@ import type {
 import { registerAuthRoutes } from './auth.js';
 import { registerRoomRoutes } from './rooms.js';
 import { registerTurnRoutes } from './turns.js';
+import { registerSyncRoutes } from './sync.js';
+import { registerMessagingRoutes } from './messaging.js';
 
 // =============================================================================
 // Types
@@ -54,6 +56,12 @@ export function registerRoutes(fastify: FastifyInstance): void {
 
   // Register turn routes (#28)
   registerTurnRoutes(fastify);
+
+  // Register sync routes (#29)
+  registerSyncRoutes(fastify);
+
+  // Register messaging routes (#30)
+  registerMessagingRoutes(fastify);
 
   // ==========================================================================
   // Session Management API (#25)
