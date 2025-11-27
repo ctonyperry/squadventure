@@ -1,0 +1,113 @@
+{
+  "$schema": "./schemas/races.schema.json",
+  "version": "1.0.0",
+  "races": {
+    "human": {
+      "name": "Human",
+      "abilityBonuses": {
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 1
+      },
+      "size": "Medium",
+      "speed": 30,
+      "traits": ["Extra Language"],
+      "languages": ["Common", "One extra language"]
+    },
+    "elf": {
+      "name": "Elf (High)",
+      "abilityBonuses": {
+        "dexterity": 2,
+        "intelligence": 1
+      },
+      "size": "Medium",
+      "speed": 30,
+      "traits": ["Darkvision", "Fey Ancestry", "Trance", "Keen Senses", "Cantrip"],
+      "languages": ["Common", "Elvish"]
+    },
+    "dwarf": {
+      "name": "Dwarf (Hill)",
+      "abilityBonuses": {
+        "constitution": 2,
+        "wisdom": 1
+      },
+      "size": "Medium",
+      "speed": 25,
+      "traits": ["Darkvision", "Dwarven Resilience", "Stonecunning", "Dwarven Toughness"],
+      "languages": ["Common", "Dwarvish"]
+    },
+    "halfling": {
+      "name": "Halfling (Lightfoot)",
+      "abilityBonuses": {
+        "dexterity": 2,
+        "charisma": 1
+      },
+      "size": "Small",
+      "speed": 25,
+      "traits": ["Lucky", "Brave", "Halfling Nimbleness", "Naturally Stealthy"],
+      "languages": ["Common", "Halfling"]
+    },
+    "dragonborn": {
+      "name": "Dragonborn",
+      "abilityBonuses": {
+        "strength": 2,
+        "charisma": 1
+      },
+      "size": "Medium",
+      "speed": 30,
+      "traits": ["Draconic Ancestry", "Breath Weapon", "Damage Resistance"],
+      "languages": ["Common", "Draconic"]
+    },
+    "gnome": {
+      "name": "Gnome (Rock)",
+      "abilityBonuses": {
+        "intelligence": 2,
+        "constitution": 1
+      },
+      "size": "Small",
+      "speed": 25,
+      "traits": ["Darkvision", "Gnome Cunning", "Artificer's Lore", "Tinker"],
+      "languages": ["Common", "Gnomish"]
+    },
+    "halfElf": {
+      "name": "Half-Elf",
+      "abilityBonuses": {
+        "charisma": 2
+      },
+      "size": "Medium",
+      "speed": 30,
+      "traits": ["Darkvision", "Fey Ancestry", "Skill Versatility"],
+      "languages": ["Common", "Elvish", "One extra language"],
+      "additionalAbilityBonuses": {
+        "count": 2,
+        "amount": 1,
+        "excludes": ["charisma"]
+      }
+    },
+    "halfOrc": {
+      "name": "Half-Orc",
+      "abilityBonuses": {
+        "strength": 2,
+        "constitution": 1
+      },
+      "size": "Medium",
+      "speed": 30,
+      "traits": ["Darkvision", "Menacing", "Relentless Endurance", "Savage Attacks"],
+      "languages": ["Common", "Orc"]
+    },
+    "tiefling": {
+      "name": "Tiefling",
+      "abilityBonuses": {
+        "intelligence": 1,
+        "charisma": 2
+      },
+      "size": "Medium",
+      "speed": 30,
+      "traits": ["Darkvision", "Hellish Resistance", "Infernal Legacy"],
+      "languages": ["Common", "Infernal"]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "./schemas/system.schema.json",
+  "id": "dnd5e",
+  "name": "Dungeons & Dragons 5th Edition",
+  "version": "1.0.0",
+  "description": "D&D 5e System Reference Document (SRD) implementation",
+  "source": "SRD 5.1",
+  "files": {
+    "races": "races.json",
+    "classes": "classes.json",
+    "backgrounds": "backgrounds.json",
+    "progression": "progression.json",
+    "spellSlots": "spell-slots.json"
+  },
+  "mechanics": {
+    "abilityScores": ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
+    "diceTypes": [4, 6, 8, 10, 12, 20, 100],
+    "maxLevel": 20,
+    "baseProficiencyBonus": 2,
+    "maxSpellLevel": 9
+  },
+  "damageTypes": [
+    "bludgeoning", "piercing", "slashing",
+    "fire", "cold", "lightning", "thunder",
+    "acid", "poison", "necrotic", "radiant",
+    "force", "psychic"
+  ],
+  "conditions": [
+    "blinded", "charmed", "deafened", "exhaustion",
+    "frightened", "grappled", "incapacitated", "invisible",
+    "paralyzed", "petrified", "poisoned", "prone",
+    "restrained", "stunned", "unconscious"
+  ]
+}

@@ -8,3 +8,32 @@ export * from './testing/index.js';
 export * from './inventory/index.js';
 export * from './magic/index.js';
 export * from './progression/index.js';
+
+// System module - explicit exports to avoid CasterType conflict with magic module
+export type {
+  GameSystem,
+  RaceDefinition,
+  ClassDefinition,
+  BackgroundDefinition,
+  ClassFeature,
+  SkillChoices,
+  BackgroundFeature,
+  ProgressionSystem,
+  MagicSystem,
+  CombatSystem,
+  CreatureSize,
+  AbilityBonuses,
+  SpellSlotTable,
+  RacesConfig,
+  ClassesConfig,
+  BackgroundsConfig,
+  ProgressionConfig,
+  SpellSlotsConfig,
+  SystemConfig,
+} from './system/index.js';
+
+export {
+  Dnd5eGameSystem,
+  getDnd5eSystem,
+  createDnd5eSystem,
+} from './system/index.js';

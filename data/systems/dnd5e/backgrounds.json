@@ -1,0 +1,81 @@
+{
+  "$schema": "./schemas/backgrounds.schema.json",
+  "version": "1.0.0",
+  "backgrounds": {
+    "acolyte": {
+      "name": "Acolyte",
+      "skillProficiencies": ["Insight", "Religion"],
+      "toolProficiencies": [],
+      "languages": 2,
+      "equipment": ["Holy symbol", "Prayer book or wheel", "5 sticks of incense", "Vestments", "Common clothes", "15 gp"],
+      "feature": {
+        "name": "Shelter of the Faithful",
+        "description": "You and your companions can receive free healing and care at temples of your faith."
+      },
+      "traits": ["I idolize a particular hero of my faith.", "I can find common ground between the fiercest enemies."],
+      "ideals": ["Tradition", "Charity", "Change", "Power", "Faith", "Aspiration"],
+      "bonds": ["I would die to recover an ancient relic.", "I owe my life to the priest who took me in."],
+      "flaws": ["I judge others harshly.", "I put too much trust in those who wield power within my temple."]
+    },
+    "criminal": {
+      "name": "Criminal",
+      "skillProficiencies": ["Deception", "Stealth"],
+      "toolProficiencies": ["One type of gaming set", "Thieves' tools"],
+      "languages": 0,
+      "equipment": ["Crowbar", "Dark common clothes with hood", "15 gp"],
+      "feature": {
+        "name": "Criminal Contact",
+        "description": "You have a reliable contact in the criminal underworld."
+      },
+      "traits": ["I always have a plan for when things go wrong.", "I am incredibly slow to trust."],
+      "ideals": ["Honor", "Freedom", "Charity", "Greed", "People", "Redemption"],
+      "bonds": ["I'm trying to pay off an old debt.", "Someone I loved died because of a mistake I made."],
+      "flaws": ["When I see something valuable, I can't think about anything but how to steal it.", "I turn tail and run when things look bad."]
+    },
+    "folkHero": {
+      "name": "Folk Hero",
+      "skillProficiencies": ["Animal Handling", "Survival"],
+      "toolProficiencies": ["One type of artisan's tools", "Vehicles (land)"],
+      "languages": 0,
+      "equipment": ["Artisan's tools", "Shovel", "Iron pot", "Common clothes", "10 gp"],
+      "feature": {
+        "name": "Rustic Hospitality",
+        "description": "Common folk will shelter you from the law (but not danger)."
+      },
+      "traits": ["I judge people by their actions, not words.", "If someone is in trouble, I'm always ready to help."],
+      "ideals": ["Respect", "Fairness", "Freedom", "Might", "Sincerity", "Destiny"],
+      "bonds": ["I have a family, but I have no idea where they are.", "I protect those who cannot protect themselves."],
+      "flaws": ["I have a weakness for the vices of the city.", "Secretly, I believe things would be better if I were a tyrant."]
+    },
+    "noble": {
+      "name": "Noble",
+      "skillProficiencies": ["History", "Persuasion"],
+      "toolProficiencies": ["One type of gaming set"],
+      "languages": 1,
+      "equipment": ["Fine clothes", "Signet ring", "Scroll of pedigree", "25 gp"],
+      "feature": {
+        "name": "Position of Privilege",
+        "description": "People assume you have the right to be wherever you are. Common folk accommodate you."
+      },
+      "traits": ["My eloquent flattery makes everyone I talk to feel important.", "Despite my noble birth, I do not place myself above other folk."],
+      "ideals": ["Respect", "Responsibility", "Independence", "Power", "Family", "Noble Obligation"],
+      "bonds": ["I will face any challenge to win the approval of my family.", "My house's alliance with another noble family must be sustained."],
+      "flaws": ["I secretly believe everyone is beneath me.", "I hide a truly scandalous secret."]
+    },
+    "soldier": {
+      "name": "Soldier",
+      "skillProficiencies": ["Athletics", "Intimidation"],
+      "toolProficiencies": ["One type of gaming set", "Vehicles (land)"],
+      "languages": 0,
+      "equipment": ["Insignia of rank", "Trophy from fallen enemy", "Bone dice or deck of cards", "Common clothes", "10 gp"],
+      "feature": {
+        "name": "Military Rank",
+        "description": "Soldiers loyal to your former military organization recognize your authority."
+      },
+      "traits": ["I'm always polite and respectful.", "I can stare down a hell hound without flinching."],
+      "ideals": ["Greater Good", "Responsibility", "Independence", "Might", "Live and Let Live", "Nation"],
+      "bonds": ["I would still lay down my life for the people I served with.", "Someone saved my life on the battlefield."],
+      "flaws": ["I made a terrible mistake in battle that cost many lives.", "My hatred of my enemies is blind and unreasoning."]
+    }
+  }
+}

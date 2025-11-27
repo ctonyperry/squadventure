@@ -1,0 +1,97 @@
+{
+  "$schema": "./schemas/classes.schema.json",
+  "version": "1.0.0",
+  "classes": {
+    "fighter": {
+      "name": "Fighter",
+      "hitDie": 10,
+      "primaryAbility": "strength",
+      "savingThrows": ["strength", "constitution"],
+      "armorProficiencies": ["Light", "Medium", "Heavy", "Shields"],
+      "weaponProficiencies": ["Simple", "Martial"],
+      "skillChoices": {
+        "count": 2,
+        "options": ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"]
+      },
+      "features": [
+        { "level": 1, "name": "Fighting Style", "description": "Choose a fighting style specialization." },
+        { "level": 1, "name": "Second Wind", "description": "Regain 1d10 + level HP as a bonus action (short rest)." },
+        { "level": 2, "name": "Action Surge", "description": "Take an additional action (short rest)." },
+        { "level": 3, "name": "Martial Archetype", "description": "Choose a martial archetype that grants additional features." },
+        { "level": 4, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." },
+        { "level": 5, "name": "Extra Attack", "description": "Attack twice when you take the Attack action." },
+        { "level": 6, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." },
+        { "level": 8, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." },
+        { "level": 9, "name": "Indomitable", "description": "Reroll a failed saving throw (once per long rest)." }
+      ],
+      "startingEquipment": ["Chain mail or leather + longbow", "Martial weapon + shield or two martial weapons", "Light crossbow + 20 bolts or two handaxes", "Dungeoneer's pack or explorer's pack"]
+    },
+    "rogue": {
+      "name": "Rogue",
+      "hitDie": 8,
+      "primaryAbility": "dexterity",
+      "savingThrows": ["dexterity", "intelligence"],
+      "armorProficiencies": ["Light"],
+      "weaponProficiencies": ["Simple", "Hand crossbow", "Longsword", "Rapier", "Shortsword"],
+      "skillChoices": {
+        "count": 4,
+        "options": ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand", "Stealth"]
+      },
+      "features": [
+        { "level": 1, "name": "Sneak Attack", "description": "1d6 extra damage when attacking with advantage or ally nearby." },
+        { "level": 1, "name": "Thieves' Cant", "description": "Secret language of thieves." },
+        { "level": 2, "name": "Cunning Action", "description": "Dash, Disengage, or Hide as a bonus action." },
+        { "level": 3, "name": "Roguish Archetype", "description": "Choose an archetype that grants additional features." },
+        { "level": 4, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." },
+        { "level": 5, "name": "Uncanny Dodge", "description": "Halve damage from an attack you can see as a reaction." },
+        { "level": 6, "name": "Expertise", "description": "Double proficiency bonus for two more skills." },
+        { "level": 7, "name": "Evasion", "description": "Take no damage on successful Dex saves, half on failure." },
+        { "level": 8, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." }
+      ],
+      "startingEquipment": ["Rapier or shortsword", "Shortbow + quiver + 20 arrows or shortsword", "Burglar's pack, dungeoneer's pack, or explorer's pack", "Leather armor, two daggers, thieves' tools"]
+    },
+    "wizard": {
+      "name": "Wizard",
+      "hitDie": 6,
+      "primaryAbility": "intelligence",
+      "savingThrows": ["intelligence", "wisdom"],
+      "armorProficiencies": [],
+      "weaponProficiencies": ["Dagger", "Dart", "Sling", "Quarterstaff", "Light crossbow"],
+      "skillChoices": {
+        "count": 2,
+        "options": ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"]
+      },
+      "features": [
+        { "level": 1, "name": "Spellcasting", "description": "Cast wizard spells using Intelligence." },
+        { "level": 1, "name": "Arcane Recovery", "description": "Recover spell slots on a short rest." },
+        { "level": 2, "name": "Arcane Tradition", "description": "Choose a school of magic specialization." },
+        { "level": 4, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." },
+        { "level": 6, "name": "Arcane Tradition Feature", "description": "Gain a feature from your chosen school." },
+        { "level": 8, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." }
+      ],
+      "startingEquipment": ["Quarterstaff or dagger", "Component pouch or arcane focus", "Scholar's pack or explorer's pack", "Spellbook"]
+    },
+    "cleric": {
+      "name": "Cleric",
+      "hitDie": 8,
+      "primaryAbility": "wisdom",
+      "savingThrows": ["wisdom", "charisma"],
+      "armorProficiencies": ["Light", "Medium", "Shields"],
+      "weaponProficiencies": ["Simple"],
+      "skillChoices": {
+        "count": 2,
+        "options": ["History", "Insight", "Medicine", "Persuasion", "Religion"]
+      },
+      "features": [
+        { "level": 1, "name": "Spellcasting", "description": "Cast cleric spells using Wisdom." },
+        { "level": 1, "name": "Divine Domain", "description": "Choose a domain that grants additional features." },
+        { "level": 2, "name": "Channel Divinity", "description": "Use divine energy to fuel magical effects." },
+        { "level": 4, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." },
+        { "level": 5, "name": "Destroy Undead", "description": "Automatically destroy undead of CR 1/2 or lower when you turn them." },
+        { "level": 6, "name": "Channel Divinity", "description": "Gain an additional use of Channel Divinity." },
+        { "level": 8, "name": "Ability Score Improvement", "description": "Increase one ability score by 2, or two ability scores by 1." }
+      ],
+      "startingEquipment": ["Mace or warhammer (if proficient)", "Scale mail, leather, or chain mail (if proficient)", "Light crossbow + 20 bolts or simple weapon", "Priest's pack or explorer's pack", "Shield and holy symbol"]
+    }
+  }
+}
