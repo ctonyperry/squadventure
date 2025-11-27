@@ -73,6 +73,29 @@ export interface ClassDefinition {
 }
 
 // ============================================================================
+// Subclass Definitions
+// ============================================================================
+
+export interface SubclassFeature {
+  level: number;
+  name: string;
+  description: string;
+}
+
+export interface SubclassDefinition {
+  name: string;
+  description: string;
+  /** Character level at which this subclass is chosen */
+  levelRequired: number;
+  /** Features gained from this subclass */
+  features: SubclassFeature[];
+  /** Additional proficiencies granted */
+  bonusProficiencies: string[];
+  /** Domain/circle spells for caster subclasses (level -> spell names) */
+  domainSpells?: Record<string, string[]>;
+}
+
+// ============================================================================
 // Background Definitions
 // ============================================================================
 
@@ -194,6 +217,7 @@ export interface GameSystem {
   readonly races: Record<string, RaceDefinition>;
   readonly classes: Record<string, ClassDefinition>;
   readonly backgrounds: Record<string, BackgroundDefinition>;
+  readonly subclasses: Record<string, Record<string, SubclassDefinition>>;
 
   // Subsystems
   readonly progression: ProgressionSystem;
@@ -208,6 +232,8 @@ export interface GameSystem {
   getRace(raceKey: string): RaceDefinition | undefined;
   getClass(classKey: string): ClassDefinition | undefined;
   getBackground(backgroundKey: string): BackgroundDefinition | undefined;
+  getSubclass(classKey: string, subclassKey: string): SubclassDefinition | undefined;
+  getSubclassesForClass(classKey: string): Record<string, SubclassDefinition>;
 }
 
 // ============================================================================
@@ -227,6 +253,11 @@ export interface ClassesConfig {
 export interface BackgroundsConfig {
   version: string;
   backgrounds: Record<string, BackgroundDefinition>;
+}
+
+export interface SubclassesConfig {
+  version: string;
+  subclasses: Record<string, Record<string, SubclassDefinition>>;
 }
 
 export interface ProgressionConfig {

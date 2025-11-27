@@ -10,6 +10,7 @@ import type {
   RaceDefinition,
   ClassDefinition,
   BackgroundDefinition,
+  SubclassDefinition,
   ProgressionSystem,
   MagicSystem,
   CombatSystem,
@@ -17,6 +18,7 @@ import type {
   RacesConfig,
   ClassesConfig,
   BackgroundsConfig,
+  SubclassesConfig,
   ProgressionConfig,
   SpellSlotsConfig,
   SystemConfig,
@@ -297,6 +299,80 @@ const SPELL_SLOTS_DATA: SpellSlotsConfig = {
   },
 };
 
+const SUBCLASSES_DATA: SubclassesConfig = {
+  version: '1.0.0',
+  subclasses: {
+    fighter: {
+      champion: {
+        name: 'Champion',
+        description: 'The archetypal Champion focuses on the development of raw physical power honed to deadly perfection.',
+        levelRequired: 3,
+        features: [
+          { level: 3, name: 'Improved Critical', description: 'Your weapon attacks score a critical hit on a roll of 19 or 20.' },
+          { level: 7, name: 'Remarkable Athlete', description: 'Add half your proficiency bonus (round up) to any Strength, Dexterity, or Constitution check you make that doesn\'t already use your proficiency bonus.' },
+          { level: 10, name: 'Additional Fighting Style', description: 'Choose a second option from the Fighting Style class feature.' },
+          { level: 15, name: 'Superior Critical', description: 'Your weapon attacks score a critical hit on a roll of 18-20.' },
+          { level: 18, name: 'Survivor', description: 'At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left.' },
+        ],
+        bonusProficiencies: [],
+      },
+    },
+    rogue: {
+      thief: {
+        name: 'Thief',
+        description: 'You hone your skills in the larcenous arts. Burglars, bandits, cutpurses, and other criminals typically follow this archetype.',
+        levelRequired: 3,
+        features: [
+          { level: 3, name: 'Fast Hands', description: 'You can use the bonus action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves\' tools to disarm a trap or open a lock, or take the Use an Object action.' },
+          { level: 3, name: 'Second-Story Work', description: 'You gain the ability to climb faster than normal; climbing no longer costs you extra movement.' },
+          { level: 9, name: 'Supreme Sneak', description: 'You have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn.' },
+          { level: 13, name: 'Use Magic Device', description: 'You ignore all class, race, and level requirements on the use of magic items.' },
+          { level: 17, name: 'Thief\'s Reflexes', description: 'You can take two turns during the first round of any combat.' },
+        ],
+        bonusProficiencies: [],
+      },
+    },
+    wizard: {
+      evocation: {
+        name: 'School of Evocation',
+        description: 'You focus your study on magic that creates powerful elemental effects such as bitter cold, searing flame, rolling thunder, crackling lightning, and burning acid.',
+        levelRequired: 2,
+        features: [
+          { level: 2, name: 'Evocation Savant', description: 'The gold and time you must spend to copy an evocation spell into your spellbook is halved.' },
+          { level: 2, name: 'Sculpt Spells', description: 'When you cast an evocation spell that affects other creatures that you can see, you can choose a number of them equal to 1 + the spell\'s level to automatically succeed on their saving throws.' },
+          { level: 6, name: 'Potent Cantrip', description: 'When a creature succeeds on a saving throw against your cantrip, the creature takes half the cantrip\'s damage but suffers no additional effect.' },
+          { level: 10, name: 'Empowered Evocation', description: 'You can add your Intelligence modifier to one damage roll of any wizard evocation spell you cast.' },
+          { level: 14, name: 'Overchannel', description: 'When you cast a wizard spell of 1st through 5th level that deals damage, you can deal maximum damage with that spell.' },
+        ],
+        bonusProficiencies: [],
+      },
+    },
+    cleric: {
+      life: {
+        name: 'Life Domain',
+        description: 'The Life domain focuses on the vibrant positive energy that sustains all life.',
+        levelRequired: 1,
+        features: [
+          { level: 1, name: 'Bonus Proficiency', description: 'You gain proficiency with heavy armor.' },
+          { level: 1, name: 'Disciple of Life', description: 'Whenever you use a spell of 1st level or higher to restore hit points to a creature, the creature regains additional hit points equal to 2 + the spell\'s level.' },
+          { level: 2, name: 'Channel Divinity: Preserve Life', description: 'You can use your Channel Divinity to heal the badly injured. Restore a number of hit points equal to five times your cleric level, divided among creatures within 30 feet.' },
+          { level: 6, name: 'Blessed Healer', description: 'When you cast a spell of 1st level or higher that restores hit points to a creature other than you, you regain hit points equal to 2 + the spell\'s level.' },
+          { level: 8, name: 'Divine Strike', description: 'Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage (2d8 at 14th level).' },
+          { level: 17, name: 'Supreme Healing', description: 'When you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die.' },
+        ],
+        bonusProficiencies: ['Heavy armor'],
+        domainSpells: {
+          '1': ['Bless', 'Cure Wounds'],
+          '3': ['Lesser Restoration', 'Spiritual Weapon'],
+          '5': ['Beacon of Hope', 'Revivify'],
+          '7': ['Death Ward', 'Guardian of Faith'],
+          '9': ['Mass Cure Wounds', 'Raise Dead'],
+        },
+      },
+    },
+  },
+};
+
 // ============================================================================
 // Progression System Implementation
 // ============================================================================
@@ -425,6 +501,7 @@ export class Dnd5eGameSystem implements GameSystem {
   readonly races: Record<string, RaceDefinition>;
   readonly classes: Record<string, ClassDefinition>;
   readonly backgrounds: Record<string, BackgroundDefinition>;
+  readonly subclasses: Record<string, Record<string, SubclassDefinition>>;
 
   readonly progression: ProgressionSystem;
   readonly magic: MagicSystem;
@@ -434,6 +511,7 @@ export class Dnd5eGameSystem implements GameSystem {
     this.races = RACES_DATA.races;
     this.classes = CLASSES_DATA.classes;
     this.backgrounds = BACKGROUNDS_DATA.backgrounds;
+    this.subclasses = SUBCLASSES_DATA.subclasses;
 
     this.progression = new Dnd5eProgressionSystem(PROGRESSION_DATA);
     this.magic = new Dnd5eMagicSystem(SPELL_SLOTS_DATA);
@@ -458,6 +536,14 @@ export class Dnd5eGameSystem implements GameSystem {
 
   getBackground(backgroundKey: string): BackgroundDefinition | undefined {
     return this.backgrounds[backgroundKey];
+  }
+
+  getSubclass(classKey: string, subclassKey: string): SubclassDefinition | undefined {
+    return this.subclasses[classKey]?.[subclassKey];
+  }
+
+  getSubclassesForClass(classKey: string): Record<string, SubclassDefinition> {
+    return this.subclasses[classKey] ?? {};
   }
 }
 
