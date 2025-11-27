@@ -12,6 +12,23 @@
 
 ---
 
+## Demo: The AI Handles Anything
+
+> *The DM gracefully handles even the most... creative player choices.*
+
+**Player:** `I climb onto the bar and begin an interpretive dance about the beauty of cheese`
+
+**DM:**
+> *You hop up onto the bar with the grace of a gazelle—if that gazelle had two left feet and a penchant for dairy. The crowd turns their attention towards you, eyebrows raised in a mix of confusion and intrigue. Hilda Stoutbrew drops her glass, and it shatters with a tinkle that somehow seems to harmonize with your dance.*
+>
+> *You begin your interpretive dance, passionately illustrating the journey of cheese: from the milk to the wheel, and finally, to the plate. You twirl, dip, and shimmy, all while making exaggerated gestures that could rival a bard's most emotional ballad.*
+>
+> *Some patrons giggle and start to clap, while others cheer you on with cries of **"Brie-lliant!"** and **"This is gouda!"** Old Benson raises his mug in your honor, partially spilling ale down his chin in his excitement.*
+>
+> ***Now, roll for performance to see just how well this cheesy spectacle goes over!***
+
+---
+
 ## Features
 
 ### Core Systems
