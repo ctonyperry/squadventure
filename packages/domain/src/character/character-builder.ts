@@ -14,6 +14,7 @@ import {
   getClassStartingGold,
   type ItemTemplate,
 } from '../inventory/index.js';
+import { createSpellcasting, CLASS_CASTER_TYPE } from '../magic/index.js';
 
 /**
  * D&D 5e Race data
@@ -555,7 +556,23 @@ export class CharacterBuilder {
       proficiencyBonus: 2,
     };
 
-    return {
+    // Initialize spellcasting for caster classes
+    const classKeyEntry = Object.entries(SRD_CLASSES).find(
+      ([_, c]) => c.name === this.character.class
+    );
+    const classKey = classKeyEntry?.[0];
+
+    const casterType = classKey ? CLASS_CASTER_TYPE[classKey] : undefined;
+    const spellcasting = casterType && casterType !== 'none' && classKey
+      ? createSpellcasting(
+          classKey,
+          this.character.level!,
+          this.abilityScores,
+          stats.proficiencyBonus!
+        )
+      : undefined;
+
+    const result: CharacterSheet = {
       id: this.character.id!,
       name: this.character.name,
       race: this.character.race,
@@ -567,6 +584,13 @@ export class CharacterBuilder {
       features: this.character.features!,
       proficiencies: this.character.proficiencies!,
     };
+
+    // Only add spellcasting if the character is a caster (exactOptionalPropertyTypes)
+    if (spellcasting) {
+      result.spellcasting = spellcasting;
+    }
+
+    return result;
   }
 
   /**

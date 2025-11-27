@@ -6,3 +6,4 @@ export * from './character/index.js';
 export * from './knowledge/index.js';
 export * from './testing/index.js';
 export * from './inventory/index.js';
+export * from './magic/index.js';

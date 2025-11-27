@@ -225,6 +225,49 @@ export interface CreatureStats {
   vulnerabilities?: string[];
 }
 
+// ============================================================================
+// Magic & Spell Types
+// ============================================================================
+
+export type SpellSchool = 'abjuration' | 'conjuration' | 'divination' | 'enchantment' | 'evocation' | 'illusion' | 'necromancy' | 'transmutation';
+
+export interface SpellSlots {
+  /** Slots per spell level (index 0 = 1st level, index 8 = 9th level) */
+  current: [number, number, number, number, number, number, number, number, number];
+  max: [number, number, number, number, number, number, number, number, number];
+}
+
+export interface SpellInfo {
+  name: string;
+  level: number; // 0 = cantrip
+  school: SpellSchool;
+  castingTime: string;
+  range: string;
+  components: string;
+  duration: string;
+  concentration: boolean;
+  description: string;
+}
+
+export interface CharacterSpellcasting {
+  /** Spellcasting ability (intelligence, wisdom, charisma) */
+  ability: keyof AbilityScores;
+  /** Spell save DC = 8 + proficiency + ability mod */
+  spellSaveDC: number;
+  /** Spell attack bonus = proficiency + ability mod */
+  spellAttackBonus: number;
+  /** Available spell slots */
+  slots: SpellSlots;
+  /** Cantrips known */
+  cantripsKnown: string[];
+  /** Spells known (for spontaneous casters like Sorcerers) */
+  spellsKnown: string[];
+  /** Prepared spells (for prepared casters like Wizards, Clerics) */
+  preparedSpells: string[];
+  /** Maximum number of spells that can be prepared */
+  maxPreparedSpells: number;
+}
+
 export interface CharacterSheet {
   id: EntityId;
   name: string;
@@ -234,6 +277,7 @@ export interface CharacterSheet {
   background: string;
   stats: CreatureStats;
   inventory: CharacterInventory;
+  spellcasting?: CharacterSpellcasting;
   features: string[];
   proficiencies: {
     armor: string[];
