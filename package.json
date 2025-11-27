@@ -16,7 +16,7 @@
   },
   "keywords": ["dnd", "ai", "dungeon-master", "llm", "tabletop"],
   "author": "",
-  "license": "MIT",
+  "license": "BUSL-1.1",
   "packageManager": "pnpm@10.15.1",
   "engines": {
     "node": ">=20.0.0"

@@ -7,7 +7,7 @@
 
   A voice-driven AI game guide with real-time speech interaction, adaptive storytelling, and a modular rules engine inspired by classic tabletop RPGs.
 
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![License: BSL 1.1](https://img.shields.io/badge/License-BSL%201.1-blue.svg)](LICENSE)
 </div>
 
 ---
@@ -156,7 +156,11 @@ These can be used to automatically test game scenarios and DM responses.
 
 ## License
 
-MIT
+[Business Source License 1.1](LICENSE)
+
+- **Personal/Educational Use**: Allowed
+- **Commercial/Production Use**: Requires a commercial license
+- **Change Date**: November 27, 2028 (becomes Apache 2.0)
 
 ## Acknowledgments
 
