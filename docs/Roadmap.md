@@ -123,8 +123,10 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 **Design Philosophy**: Algorithms generate structure, LLM adds flavor
 
+**Progress**:
+- ✅ [#6: Session Persistence (SQLite)](https://github.com/ctonyperry/squadventure/issues/6) - **Foundational** - Complete
+
 **Issues**:
-- [#6: Session Persistence (SQLite)](https://github.com/ctonyperry/squadventure/issues/6) - **Foundational**
 - [#10: Conditions Manager (Status Effects)](https://github.com/ctonyperry/squadventure/issues/10)
 - [#12: Expand Spell Knowledge Base](https://github.com/ctonyperry/squadventure/issues/12)
 - [#13: Encounter Difficulty Calculator](https://github.com/ctonyperry/squadventure/issues/13)
@@ -223,11 +225,11 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 | [#4](https://github.com/ctonyperry/squadventure/issues/4) | Death Saves | ✅ Closed |
 | [#5](https://github.com/ctonyperry/squadventure/issues/5) | Monster Stat Blocks | ✅ Closed |
 | [#18](https://github.com/ctonyperry/squadventure/issues/18) | Migrate to GameSystem | ✅ Closed |
+| [#6](https://github.com/ctonyperry/squadventure/issues/6) | Session Persistence (SQLite) | ✅ Closed |
 
 ### Planned Features
 | Issue | Title | Phase |
 |-------|-------|-------|
-| [#6](https://github.com/ctonyperry/squadventure/issues/6) | Session Persistence (SQLite) | 4 |
 | [#10](https://github.com/ctonyperry/squadventure/issues/10) | Conditions Manager | 4 |
 | [#12](https://github.com/ctonyperry/squadventure/issues/12) | Expand Spell Knowledge Base | 4 |
 | [#13](https://github.com/ctonyperry/squadventure/issues/13) | Encounter Difficulty Calculator | 4 |

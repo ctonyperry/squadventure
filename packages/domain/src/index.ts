@@ -8,6 +8,15 @@ export * from './testing/index.js';
 export * from './inventory/index.js';
 export * from './magic/index.js';
 export * from './progression/index.js';
+// Conditions module - explicit exports to avoid CONDITION_EFFECTS conflict with combat module
+export {
+  ConditionManager,
+  createConditionManager,
+  type ConditionType,
+  type DurationType,
+  type ConditionInstance,
+  type ConditionCheckResult,
+} from './conditions/index.js';
 
 // System module - explicit exports to avoid CasterType conflict with magic module
 export type {
