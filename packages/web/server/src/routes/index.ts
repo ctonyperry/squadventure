@@ -16,6 +16,7 @@ import type {
 } from '../bridge/index.js';
 import { registerAuthRoutes } from './auth.js';
 import { registerRoomRoutes } from './rooms.js';
+import { registerTurnRoutes } from './turns.js';
 
 // =============================================================================
 // Types
@@ -50,6 +51,9 @@ export function registerRoutes(fastify: FastifyInstance): void {
 
   // Register room routes (#27)
   registerRoomRoutes(fastify);
+
+  // Register turn routes (#28)
+  registerTurnRoutes(fastify);
 
   // ==========================================================================
   // Session Management API (#25)
