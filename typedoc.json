@@ -8,7 +8,6 @@
   ],
   "entryPointStrategy": "expand",
   "out": "docs/api",
-  "plugin": ["typedoc-plugin-markdown"],
   "readme": "none",
   "githubPages": false,
   "excludePrivate": true,
@@ -17,6 +16,13 @@
   "hideGenerator": true,
   "name": "Squadventure API",
   "includeVersion": false,
+  "exclude": [
+    "**/node_modules/**",
+    "packages/web/**",
+    "packages/cli/**",
+    "packages/world-gen/**"
+  ],
+  "skipErrorChecking": true,
   "navigationLinks": {
     "Wiki": "../wiki/Home.md",
     "GitHub": "https://github.com/ctonyperry/squadventure"

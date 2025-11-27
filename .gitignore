@@ -31,3 +31,6 @@ nul
 *.log
 npm-debug.log*
 pnpm-debug.log*
+
+# Generated docs
+docs/api/
