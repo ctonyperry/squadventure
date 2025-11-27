@@ -53,12 +53,12 @@ Welcome to the Squadventure developer wiki! This documentation covers the archit
 
 ### Project
 - [Changelog](project/Changelog.md) - Version history
-- [License](project/License.md) - MIT + OGL acknowledgments
+- [License](project/License.md) - BSL-1.1 + OGL acknowledgments
 - [Roadmap](../Roadmap.md) - Project phases and status
 
 ## Project Status
 
-**Current Phase:** Phase 7 - Polish & Scale
+**Current Phase:** Phase 8 - Session Flow & Core Loop
 
 | Phase | Status | Description |
 |-------|--------|-------------|
@@ -69,7 +69,9 @@ Welcome to the Squadventure developer wiki! This documentation covers the archit
 | Phase 4: Procedural Gen | ✅ Complete | Content generators |
 | Phase 5: World Overlay | ✅ Complete | Campaign settings |
 | Phase 6: World Gen | ✅ Complete | Agent-driven world creation |
-| Phase 7: Polish | 🚧 In Progress | API, multiplayer, optimization |
+| Phase 7: Polish & Scale | ✅ Complete | API, multiplayer, voice foundation |
+| Phase 8: Session Flow | 📋 Planned | Session setup, character flow |
+| Phase 9: Web UI | 📋 Planned | Shared-screen multiplayer UI |
 
 See the full [Roadmap](../Roadmap.md) for detailed phase information.
 

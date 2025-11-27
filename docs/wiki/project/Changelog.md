@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Comprehensive wiki documentation
-- TypeDoc configuration for API documentation
+- Phase 8 planning: Session Flow & Core Loop (issues #40-48)
+- Phase 9 planning: Multiplayer Web UI (issues #49-60)
 
 ### Changed
 - (None yet)
@@ -19,6 +19,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - (None yet)
+
+---
+
+## [0.7.0] - 2024-11-27
+
+### Added
+- **Phase 7 Complete**: Polish & Scale
+  - Web API Integration (Game Engine Bridge, Events, Commands)
+  - Multi-Player Infrastructure (Rooms, Identity, Turn Coordination)
+  - Cost Optimization (Model Routing, Cost Tracking)
+  - Voice Integration Foundation (STT, TTS, Voice Channels)
+- Comprehensive wiki documentation (40+ pages)
+- TypeDoc configuration for API documentation
+- Logo and README updates with gameplay demo
+- BSL-1.1 license (changed from MIT)
 
 ---
 
