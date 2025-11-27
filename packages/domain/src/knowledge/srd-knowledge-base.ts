@@ -402,6 +402,310 @@ Teleport up to 30 feet to an unoccupied space you can see. Surrounded by silvery
 Note: Bonus action allows full action use. Great for escaping grapples (no check needed) or repositioning.`,
     keywords: ['misty step', 'teleport', 'bonus action', 'escape', 'conjuration', 'sorcerer', 'warlock', 'wizard'],
   },
+  // Cantrips
+  {
+    id: 'spell-fire-bolt',
+    category: 'Spells',
+    title: 'Fire Bolt',
+    content: `Fire Bolt (Evocation cantrip)
+Casting Time: 1 action
+Range: 120 feet
+Components: V, S
+Duration: Instantaneous
+
+You hurl a mote of fire at a creature or object within range. Make a ranged spell attack. On hit, target takes 1d10 fire damage. Flammable objects not worn or carried ignite.
+
+Damage increases: 2d10 at 5th level, 3d10 at 11th level, 4d10 at 17th level.`,
+    keywords: ['fire bolt', 'cantrip', 'fire', 'ranged attack', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-ray-of-frost',
+    category: 'Spells',
+    title: 'Ray of Frost',
+    content: `Ray of Frost (Evocation cantrip)
+Casting Time: 1 action
+Range: 60 feet
+Components: V, S
+Duration: Instantaneous
+
+A frigid beam of blue-white light streaks toward a creature. Make a ranged spell attack. On hit, 1d8 cold damage and speed reduced by 10 feet until start of your next turn.
+
+Damage increases: 2d8 at 5th level, 3d8 at 11th level, 4d8 at 17th level.`,
+    keywords: ['ray of frost', 'cantrip', 'cold', 'slow', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-prestidigitation',
+    category: 'Spells',
+    title: 'Prestidigitation',
+    content: `Prestidigitation (Transmutation cantrip)
+Casting Time: 1 action
+Range: 10 feet
+Components: V, S
+Duration: Up to 1 hour
+
+Minor magical trick. Choose one effect:
+- Create harmless sensory effect (sparks, music, odor, etc.)
+- Light or snuff out a candle, torch, or small campfire
+- Clean or soil an object no larger than 1 cubic foot
+- Chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour
+- Make a color, mark, or symbol appear on object for 1 hour
+- Create trinket or illusory image that fits in your hand until end of next turn
+
+Can have up to 3 non-instantaneous effects active at once. Dismiss as action.`,
+    keywords: ['prestidigitation', 'cantrip', 'utility', 'trick', 'bard', 'sorcerer', 'warlock', 'wizard'],
+  },
+  {
+    id: 'spell-light',
+    category: 'Spells',
+    title: 'Light',
+    content: `Light (Evocation cantrip)
+Casting Time: 1 action
+Range: Touch
+Components: V, M (firefly or phosphorescent moss)
+Duration: 1 hour
+
+Touch one object no larger than 10 feet in any dimension. Object sheds bright light in 20-foot radius, dim light for additional 20 feet. Light can be colored.
+
+Completely covering the object blocks light. Spell ends if cast again or dismissed as action.
+
+If target is held/worn by hostile creature, they make DEX save to avoid.`,
+    keywords: ['light', 'cantrip', 'illumination', 'utility', 'bard', 'cleric', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-mage-hand',
+    category: 'Spells',
+    title: 'Mage Hand',
+    content: `Mage Hand (Conjuration cantrip)
+Casting Time: 1 action
+Range: 30 feet
+Components: V, S
+Duration: 1 minute
+
+A spectral, floating hand appears at a point you choose within range. Hand lasts for duration or until dismissed as action.
+
+Hand can manipulate objects, open unlocked doors/containers, stow/retrieve items from open containers, pour out contents of a vial. Can't attack, activate magic items, or carry more than 10 pounds.
+
+You can move the hand up to 30 feet as an action. Can't move hand more than 30 feet from you.`,
+    keywords: ['mage hand', 'cantrip', 'utility', 'telekinesis', 'bard', 'sorcerer', 'warlock', 'wizard'],
+  },
+  // 1st Level Spells
+  {
+    id: 'spell-detect-magic',
+    category: 'Spells',
+    title: 'Detect Magic',
+    content: `Detect Magic (1st level Divination, Ritual)
+Casting Time: 1 action
+Range: Self
+Components: V, S
+Duration: Concentration, up to 10 minutes
+
+For the duration, you sense the presence of magic within 30 feet of you. If you sense magic, you can use your action to see a faint aura around any visible creature or object that bears magic, and you learn its school of magic, if any.
+
+The spell can penetrate most barriers, but is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.`,
+    keywords: ['detect magic', 'ritual', 'divination', 'sense', 'identify', 'bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-identify',
+    category: 'Spells',
+    title: 'Identify',
+    content: `Identify (1st level Divination, Ritual)
+Casting Time: 1 minute
+Range: Touch
+Components: V, S, M (pearl worth 100 gp and owl feather)
+Duration: Instantaneous
+
+You choose one object that you must touch throughout casting. If it's a magic item or magic-imbued object, you learn its properties and how to use them, whether it requires attunement, and how many charges it has.
+
+You learn whether any spells are affecting the item and what they are. If the item was created by a spell, you learn which spell created it.
+
+If you touch a creature, you learn what spells are currently affecting it.`,
+    keywords: ['identify', 'ritual', 'divination', 'magic item', 'bard', 'wizard'],
+  },
+  {
+    id: 'spell-mage-armor',
+    category: 'Spells',
+    title: 'Mage Armor',
+    content: `Mage Armor (1st level Abjuration)
+Casting Time: 1 action
+Range: Touch
+Components: V, S, M (piece of cured leather)
+Duration: 8 hours
+
+You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor or if you dismiss the spell as an action.`,
+    keywords: ['mage armor', 'armor', 'AC', 'defense', 'abjuration', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-burning-hands',
+    category: 'Spells',
+    title: 'Burning Hands',
+    content: `Burning Hands (1st level Evocation)
+Casting Time: 1 action
+Range: Self (15-foot cone)
+Components: V, S
+Duration: Instantaneous
+
+As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth. Each creature in a 15-foot cone must make a DEX saving throw.
+- Failed save: 3d6 fire damage
+- Success: Half damage
+
+The fire ignites flammable objects not worn or carried.
+
+At Higher Levels: +1d6 damage per slot level above 1st.`,
+    keywords: ['burning hands', 'fire', 'cone', 'area', 'evocation', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-charm-person',
+    category: 'Spells',
+    title: 'Charm Person',
+    content: `Charm Person (1st level Enchantment)
+Casting Time: 1 action
+Range: 30 feet
+Components: V, S
+Duration: 1 hour
+
+You attempt to charm a humanoid you can see within range. It must make a WIS saving throw with advantage if you or your companions are fighting it. On failure, it is charmed by you until the spell ends or you or your companions do anything harmful to it.
+
+The charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was charmed by you.
+
+At Higher Levels: Target one additional creature per slot level above 1st.`,
+    keywords: ['charm person', 'charm', 'enchantment', 'social', 'humanoid', 'bard', 'druid', 'sorcerer', 'warlock', 'wizard'],
+  },
+  // 2nd Level Spells
+  {
+    id: 'spell-invisibility',
+    category: 'Spells',
+    title: 'Invisibility',
+    content: `Invisibility (2nd level Illusion)
+Casting Time: 1 action
+Range: Touch
+Components: V, S, M (eyelash encased in gum arabic)
+Duration: Concentration, up to 1 hour
+
+A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person. The spell ends for a target that attacks or casts a spell.
+
+At Higher Levels: Target one additional creature per slot level above 2nd.`,
+    keywords: ['invisibility', 'invisible', 'stealth', 'illusion', 'bard', 'sorcerer', 'warlock', 'wizard'],
+  },
+  {
+    id: 'spell-darkness',
+    category: 'Spells',
+    title: 'Darkness',
+    content: `Darkness (2nd level Evocation)
+Casting Time: 1 action
+Range: 60 feet
+Components: V, M (bat fur and drop of pitch or coal)
+Duration: Concentration, up to 10 minutes
+
+Magical darkness spreads from a point you choose within range to fill a 15-foot-radius sphere. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it.
+
+If the point is on an object you're holding or one that isn't worn or carried, darkness emanates from the object and moves with it. Completely covering the source blocks the darkness.
+
+If any of this spell's area overlaps with light created by a spell of 2nd level or lower, the spell that created the light is dispelled.`,
+    keywords: ['darkness', 'dark', 'blind', 'evocation', 'sorcerer', 'warlock', 'wizard'],
+  },
+  {
+    id: 'spell-web',
+    category: 'Spells',
+    title: 'Web',
+    content: `Web (2nd level Conjuration)
+Casting Time: 1 action
+Range: 60 feet
+Components: V, S, M (spider web)
+Duration: Concentration, up to 1 hour
+
+You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube from that point for the duration. The webs are difficult terrain and lightly obscure their area.
+
+If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself, and the spell ends at the start of your next turn. Webs layered over a flat surface have a depth of 5 feet.
+
+Each creature that starts its turn in the webs or that enters them during its turn must make a DEX saving throw. On a failed save, the creature is restrained as long as it remains in the webs or until it breaks free.
+
+A creature restrained by the webs can use its action to make a STR check against your spell save DC. If it succeeds, it is no longer restrained.
+
+The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 round, dealing 2d4 fire damage to any creature that starts its turn in the fire.`,
+    keywords: ['web', 'restrain', 'control', 'conjuration', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-scorching-ray',
+    category: 'Spells',
+    title: 'Scorching Ray',
+    content: `Scorching Ray (2nd level Evocation)
+Casting Time: 1 action
+Range: 120 feet
+Components: V, S
+Duration: Instantaneous
+
+You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several.
+
+Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage.
+
+At Higher Levels: Create one additional ray for each slot level above 2nd.`,
+    keywords: ['scorching ray', 'fire', 'ranged attack', 'evocation', 'sorcerer', 'wizard'],
+  },
+  // 3rd Level Spells
+  {
+    id: 'spell-lightning-bolt',
+    category: 'Spells',
+    title: 'Lightning Bolt',
+    content: `Lightning Bolt (3rd level Evocation)
+Casting Time: 1 action
+Range: Self (100-foot line)
+Components: V, S, M (bit of fur and rod of amber, crystal, or glass)
+Duration: Instantaneous
+
+A stroke of lightning forming a line 100 feet long and 5 feet wide blasts out from you in a direction you choose. Each creature in the line must make a DEX saving throw.
+- Failed save: 8d6 lightning damage
+- Success: Half damage
+
+The lightning ignites flammable objects in the area that aren't being worn or carried.
+
+At Higher Levels: +1d6 damage per slot level above 3rd.`,
+    keywords: ['lightning bolt', 'lightning', 'line', 'evocation', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-fly',
+    category: 'Spells',
+    title: 'Fly',
+    content: `Fly (3rd level Transmutation)
+Casting Time: 1 action
+Range: Touch
+Components: V, S, M (wing feather from any bird)
+Duration: Concentration, up to 10 minutes
+
+You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft, unless it can stop the fall.
+
+At Higher Levels: Target one additional creature for each slot level above 3rd.`,
+    keywords: ['fly', 'flight', 'flying', 'transmutation', 'sorcerer', 'warlock', 'wizard'],
+  },
+  {
+    id: 'spell-haste',
+    category: 'Spells',
+    title: 'Haste',
+    content: `Haste (3rd level Transmutation)
+Casting Time: 1 action
+Range: 30 feet
+Components: V, S, M (shaving of licorice root)
+Duration: Concentration, up to 1 minute
+
+Choose a willing creature that you can see within range. Until the spell ends, the target's speed is doubled, it gains a +2 bonus to AC, it has advantage on DEX saving throws, and it gains an additional action on each of its turns. That action can be used only to take the Attack (one weapon attack only), Dash, Disengage, Hide, or Use an Object action.
+
+When the spell ends, the target can't move or take actions until after its next turn, as a wave of lethargy sweeps over it.`,
+    keywords: ['haste', 'speed', 'buff', 'transmutation', 'sorcerer', 'wizard'],
+  },
+  {
+    id: 'spell-dispel-magic',
+    category: 'Spells',
+    title: 'Dispel Magic',
+    content: `Dispel Magic (3rd level Abjuration)
+Casting Time: 1 action
+Range: 120 feet
+Components: V, S
+Duration: Instantaneous
+
+Choose one creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher on the target, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, the spell ends.
+
+At Higher Levels: You automatically end the effects of a spell on the target if the spell's level is equal to or less than the level of the spell slot you used.`,
+    keywords: ['dispel magic', 'dispel', 'counter', 'abjuration', 'bard', 'cleric', 'druid', 'paladin', 'sorcerer', 'warlock', 'wizard'],
+  },
 ];
 
 /**
