@@ -207,14 +207,183 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 **Goal**: Production-ready, multiplayer-capable
 
-**Components**:
-- Web API (Fastify REST + WebSocket)
-- Multi-model tiering for cost optimization
-- Multiplayer support (party mode)
-- Voice integration prep
+**Architecture Overview**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         WEB LAYER                                    │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐     │
+│  │  React Client   │  │  React Client   │  │  React Client   │     │
+│  │   (Player 1)    │  │   (Player 2)    │  │   (Player N)    │     │
+│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘     │
+│           │                    │                    │               │
+│           └────────────────────┼────────────────────┘               │
+│                                ▼                                    │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │              Fastify Server (WebSocket + REST)               │   │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │   │
+│  │  │ Room Manager │  │ Player Auth  │  │ State Sync   │       │   │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘       │   │
+│  └─────────────────────────────┬───────────────────────────────┘   │
+└────────────────────────────────┼───────────────────────────────────┘
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                      APPLICATION LAYER                               │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │                    Game Engine Bridge                        │   │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │   │
+│  │  │ Event Router │  │ Command API  │  │ State Sync   │       │   │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘       │   │
+│  └─────────────────────────────┬───────────────────────────────┘   │
+│                                ▼                                    │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │                  SessionOrchestrator                         │   │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │   │
+│  │  │Turn Manager  │  │CombatManager │  │ Tool Registry│       │   │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘       │   │
+│  └─────────────────────────────┬───────────────────────────────┘   │
+└────────────────────────────────┼───────────────────────────────────┘
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    INFRASTRUCTURE LAYER                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
+│  │ Model Router │  │ SQLite Store │  │  LLM Adapter │              │
+│  │ (Fast/Med/   │  │ (Sessions,   │  │  (OpenAI,    │              │
+│  │  Powerful)   │  │  Snapshots)  │  │   Anthropic) │              │
+│  └──────────────┘  └──────────────┘  └──────────────┘              │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Phase 7a: Web API Integration 🔌
+
+**Goal**: Connect web dashboard to actual game engine
 
 **Issues**:
-- [#11: Multi-Player Party Support](https://github.com/ctonyperry/squadventure/issues/11) - Multiple players, one DM, shared party
+- [#22: Game Engine Bridge](#22) - Connect SessionOrchestrator to web server
+- [#23: Real-time Event System](#23) - Event router for state changes
+- [#24: Command Execution API](#24) - REST/WebSocket endpoints for game commands
+- [#25: Session Management API](#25) - Load/save/list sessions via API
+
+**Key Components**:
+```
+packages/web/server/src/
+├── bridge/
+│   ├── game-bridge.ts      # SessionOrchestrator wrapper
+│   ├── event-router.ts     # Route game events to WebSocket
+│   └── state-serializer.ts # Serialize state for transmission
+├── api/
+│   ├── sessions.ts         # Session CRUD endpoints
+│   ├── commands.ts         # Game command execution
+│   └── state.ts            # State query endpoints
+```
+
+**Dependencies**: None (foundational)
+
+---
+
+#### Phase 7b: Multi-Player Infrastructure 👥
+
+**Goal**: Support multiple players in a single game session
+
+**Issues**:
+- [#11: Multi-Player Party Support](#11) - Core multiplayer architecture (existing)
+- [#26: Player Identity System](#26) - Authentication and character binding
+- [#27: Game Room Management](#27) - Room creation, joining, player tracking
+- [#28: Turn Coordination](#28) - Multi-player turn management
+- [#29: State Synchronization](#29) - Broadcast state to all players
+- [#30: Player-Specific Communication](#30) - Private messages and rolls
+
+**Key Components**:
+```
+packages/web/server/src/
+├── players/
+│   ├── player-session.ts   # Player identity and session
+│   ├── player-character.ts # Character-player binding
+│   └── auth.ts             # Simple token auth
+├── rooms/
+│   ├── room-manager.ts     # Game room lifecycle
+│   ├── room-state.ts       # Room-level state
+│   └── player-roster.ts    # Track players in room
+├── multiplayer/
+│   ├── turn-coordinator.ts # Manage turn order
+│   ├── state-sync.ts       # Sync state to clients
+│   └── private-channel.ts  # Player-specific messages
+```
+
+**Dependencies**: Phase 7a (Web API Integration)
+
+---
+
+#### Phase 7c: Cost Optimization 💰
+
+**Goal**: Intelligent model routing for cost efficiency
+
+**Issues**:
+- [#31: Task Classification System](#31) - Categorize requests by complexity
+- [#32: Enhanced Model Router](#32) - Route to appropriate model tier
+- [#33: Cost Tracking & Budgets](#33) - Track tokens and enforce limits
+- [#34: Quality Monitoring](#34) - Ensure response quality per tier
+
+**Key Components**:
+```
+packages/infrastructure/src/llm/
+├── task-classifier.ts    # Classify task complexity
+├── model-router.ts       # Enhanced routing logic (exists)
+├── cost-tracker.ts       # Token usage and costs
+└── quality-monitor.ts    # Response quality checks
+
+Task Types:
+- SIMPLE_LOOKUP: Use fast tier (rules, spells)
+- NARRATIVE: Use balanced tier (scene descriptions)
+- COMPLEX_DECISION: Use powerful tier (plot decisions)
+- TOOL_HEAVY: Route based on tool count
+```
+
+**Dependencies**: None (can parallelize with 7a/7b)
+
+---
+
+#### Phase 7d: Voice Integration Foundation 🎤
+
+**Goal**: Prepare infrastructure for voice input/output
+
+**Issues**:
+- [#35: Audio Capture Infrastructure](#35) - Browser audio capture and streaming
+- [#36: Speech-to-Text Integration](#36) - STT service abstraction
+- [#37: Text-to-Speech Integration](#37) - TTS service abstraction
+- [#38: Voice Session Management](#38) - Voice channel coordination
+
+**Key Components**:
+```
+packages/web/
+├── client/src/voice/
+│   ├── audio-capture.ts    # MediaRecorder wrapper
+│   ├── voice-activity.ts   # VAD for push-to-talk
+│   └── audio-playback.ts   # TTS audio queue
+├── server/src/voice/
+│   ├── stt-adapter.ts      # Whisper/Deepgram abstraction
+│   ├── tts-adapter.ts      # ElevenLabs/Azure abstraction
+│   └── voice-session.ts    # Voice channel management
+```
+
+**Dependencies**: Phase 7b (benefits from player identification)
+
+---
+
+#### Phase 7 Issue Summary
+
+| Sub-Phase | Issues | Priority | Dependencies |
+|-----------|--------|----------|--------------|
+| 7a: Web API Integration | #22-25 | **High** | None |
+| 7b: Multi-Player | #11, #26-30 | **High** | 7a |
+| 7c: Cost Optimization | #31-34 | Medium | None |
+| 7d: Voice Foundation | #35-38 | Low | 7b |
+
+**Recommended Order**:
+1. 7a + 7c in parallel (independent)
+2. 7b after 7a completes
+3. 7d after 7b completes (or in parallel if resources allow)
 
 ---
 
@@ -253,14 +422,35 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 | [#20](https://github.com/ctonyperry/squadventure/issues/20) | Terminology Mapping | ✅ Closed |
 | [#21](https://github.com/ctonyperry/squadventure/issues/21) | DM Guidance Injection | ✅ Closed |
 
-### Planned Features
-| Issue | Title | Phase |
-|-------|-------|-------|
-| [#7](https://github.com/ctonyperry/squadventure/issues/7) | Campaign & Story Arc Types | 6 |
-| [#8](https://github.com/ctonyperry/squadventure/issues/8) | React Dashboard (Zustand) | 6 |
-| [#9](https://github.com/ctonyperry/squadventure/issues/9) | World Generation Agent | 6 |
-| [#16](https://github.com/ctonyperry/squadventure/issues/16) | NPC Memory & Relationships | 6 |
-| [#11](https://github.com/ctonyperry/squadventure/issues/11) | Multi-Player Party Mode | 7 |
+### Phase 6 Features (Complete)
+| Issue | Title | Status |
+|-------|-------|--------|
+| [#7](https://github.com/ctonyperry/squadventure/issues/7) | Campaign & Story Arc Types | ✅ Closed |
+| [#8](https://github.com/ctonyperry/squadventure/issues/8) | React Dashboard (Zustand) | ✅ Closed |
+| [#9](https://github.com/ctonyperry/squadventure/issues/9) | World Generation Agent | ✅ Closed |
+| [#16](https://github.com/ctonyperry/squadventure/issues/16) | NPC Memory & Relationships | ✅ Closed |
+
+### Phase 7 Features (Planned)
+| Issue | Title | Sub-Phase | Priority |
+|-------|-------|-----------|----------|
+| [#11](https://github.com/ctonyperry/squadventure/issues/11) | Multi-Player Party Support | 7b | High |
+| #22 | Game Engine Bridge | 7a | High |
+| #23 | Real-time Event System | 7a | High |
+| #24 | Command Execution API | 7a | High |
+| #25 | Session Management API | 7a | High |
+| #26 | Player Identity System | 7b | High |
+| #27 | Game Room Management | 7b | High |
+| #28 | Turn Coordination | 7b | High |
+| #29 | State Synchronization | 7b | High |
+| #30 | Player-Specific Communication | 7b | High |
+| #31 | Task Classification System | 7c | Medium |
+| #32 | Enhanced Model Router | 7c | Medium |
+| #33 | Cost Tracking & Budgets | 7c | Medium |
+| #34 | Quality Monitoring | 7c | Medium |
+| #35 | Audio Capture Infrastructure | 7d | Low |
+| #36 | Speech-to-Text Integration | 7d | Low |
+| #37 | Text-to-Speech Integration | 7d | Low |
+| #38 | Voice Session Management | 7d | Low |
 
 ---
 
