@@ -277,12 +277,20 @@ export interface HitDice {
   dieType: 6 | 8 | 10 | 12;
 }
 
+export interface CharacterExperience {
+  /** Current XP total */
+  current: number;
+  /** XP needed for next level */
+  nextLevelAt: number;
+}
+
 export interface CharacterSheet {
   id: EntityId;
   name: string;
   race: string;
   class: string;
   level: number;
+  experience: CharacterExperience;
   background: string;
   stats: CreatureStats;
   inventory: CharacterInventory;

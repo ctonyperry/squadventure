@@ -16,6 +16,7 @@ import {
 } from '../inventory/index.js';
 import { createSpellcasting, CLASS_CASTER_TYPE } from '../magic/index.js';
 import { createHitDice } from './rest-mechanics.js';
+import { createExperience } from '../progression/index.js';
 
 /**
  * D&D 5e Race data
@@ -578,12 +579,16 @@ export class CharacterBuilder {
       ? createHitDice(classKey, this.character.level!)
       : createHitDice('fighter', this.character.level!); // Default to d10
 
+    // Initialize experience based on level
+    const experience = createExperience(this.character.level!);
+
     const result: CharacterSheet = {
       id: this.character.id!,
       name: this.character.name,
       race: this.character.race,
       class: this.character.class,
       level: this.character.level!,
+      experience,
       background: this.character.background,
       stats,
       inventory: this.inventory,
