@@ -268,6 +268,15 @@ export interface CharacterSpellcasting {
   maxPreparedSpells: number;
 }
 
+export interface HitDice {
+  /** Available hit dice to spend */
+  current: number;
+  /** Maximum hit dice (equals character level) */
+  max: number;
+  /** Hit die type (d6, d8, d10, d12) based on class */
+  dieType: 6 | 8 | 10 | 12;
+}
+
 export interface CharacterSheet {
   id: EntityId;
   name: string;
@@ -278,6 +287,7 @@ export interface CharacterSheet {
   stats: CreatureStats;
   inventory: CharacterInventory;
   spellcasting?: CharacterSpellcasting;
+  hitDice: HitDice;
   features: string[];
   proficiencies: {
     armor: string[];

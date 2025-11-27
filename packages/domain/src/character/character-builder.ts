@@ -15,6 +15,7 @@ import {
   type ItemTemplate,
 } from '../inventory/index.js';
 import { createSpellcasting, CLASS_CASTER_TYPE } from '../magic/index.js';
+import { createHitDice } from './rest-mechanics.js';
 
 /**
  * D&D 5e Race data
@@ -572,6 +573,11 @@ export class CharacterBuilder {
         )
       : undefined;
 
+    // Initialize hit dice based on class
+    const hitDice = classKey
+      ? createHitDice(classKey, this.character.level!)
+      : createHitDice('fighter', this.character.level!); // Default to d10
+
     const result: CharacterSheet = {
       id: this.character.id!,
       name: this.character.name,
@@ -581,6 +587,7 @@ export class CharacterBuilder {
       background: this.character.background,
       stats,
       inventory: this.inventory,
+      hitDice,
       features: this.character.features!,
       proficiencies: this.character.proficiencies!,
     };
