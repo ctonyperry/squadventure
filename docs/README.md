@@ -1,27 +1,69 @@
-# Squadventure - AI Dungeon Master
+# Squadventure Documentation
 
-Welcome to the Squadventure wiki! This project is building an AI-powered Dungeon Master for tabletop RPGs.
+Welcome to the Squadventure documentation! Squadventure is an AI-powered Dungeon Master for tabletop RPGs.
+
+## 📚 Documentation Hub
+
+### [Wiki Home](wiki/Home.md)
+The complete developer wiki with architecture docs, guides, and API reference.
+
+### [Project Roadmap](Roadmap.md)
+Project phases, current status, and planned features.
+
+### [API Reference](api/)
+Auto-generated TypeDoc documentation for all packages.
+
+---
 
 ## Quick Links
 
-- [[Roadmap]] - Project phases and current status
-- [[Architecture]] - System design and technical details
-- [[GitHub Issues]](https://github.com/ctonyperry/squadventure/issues) - Active issues and features
+### Getting Started
+- [Installation](wiki/getting-started/Installation.md) - Full setup guide
+- [Quick Start](wiki/getting-started/Quick-Start.md) - First game walkthrough
+- [Configuration](wiki/getting-started/Configuration.md) - Environment options
 
-## Vision
+### Architecture
+- [System Overview](wiki/architecture/Overview.md) - High-level design
+- [Package Structure](wiki/architecture/Package-Structure.md) - Monorepo layout
+- [Data Flow](wiki/architecture/Data-Flow.md) - Message lifecycle
 
-A D&D tabletop application with AI-powered Dungeon Masters that deliver authentic, engaging gameplay. The DM has pluggable personas (Spencer Crittenden-style improv, classic epic narrator, etc.), maintains a canonical world model as source of truth, and adapts to player style.
+### Core Systems
+- [Game System Abstraction](wiki/core-systems/Game-System-Abstraction.md) - Rules interface
+- [Combat System](wiki/core-systems/Combat-System.md) - Combat mechanics
+- [Magic System](wiki/core-systems/Magic-System.md) - Spellcasting
 
-## Key Features
+### Development
+- [Contributing](wiki/development/Contributing.md) - How to contribute
+- [Development Setup](wiki/development/Development-Setup.md) - Dev environment
+- [Code Conventions](wiki/development/Code-Conventions.md) - Style guide
 
-- **Pluggable DM Personas** - Different AI personalities for different play styles
-- **Canonical World Model** - Single source of truth for world state
-- **D&D 5e SRD Rules** - Accurate mechanical resolution
-- **Procedural Generation** - Balanced content creation
-- **Extensible Architecture** - Designed for future game systems
+### Reference
+- [DM Tools](wiki/api-reference/DM-Tools.md) - Tool documentation
+- [Commands](wiki/reference/Commands.md) - CLI commands
+- [Glossary](wiki/reference/Glossary.md) - Terms and definitions
 
-## Current Status
+---
 
-**Phase 3: Game System Abstraction** ⬅️ IN PROGRESS
+## Project Status
 
-The project has completed core mechanics (combat, spells, leveling, death saves) and is now abstracting D&D 5e specifics to enable future extensibility.
+**Current Phase:** Phase 7 - Polish & Scale
+
+| Phase | Status |
+|-------|--------|
+| Phase 1: Foundation | ✅ Complete |
+| Phase 2: Mechanics | ✅ Complete |
+| Phase 3: Abstraction | ✅ Complete |
+| Phase 4: Procedural Gen | ✅ Complete |
+| Phase 5: World Overlay | ✅ Complete |
+| Phase 6: World Gen | ✅ Complete |
+| Phase 7: Polish | 🚧 In Progress |
+
+See [Roadmap](Roadmap.md) for details.
+
+---
+
+## External Links
+
+- [GitHub Repository](https://github.com/ctonyperry/squadventure)
+- [GitHub Issues](https://github.com/ctonyperry/squadventure/issues)
+- [D&D 5e SRD](https://dnd.wizards.com/resources/systems-reference-document)

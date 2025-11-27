@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/shared/src/index.ts",
+    "packages/domain/src/index.ts",
+    "packages/infrastructure/src/index.ts",
+    "packages/application/src/index.ts"
+  ],
+  "entryPointStrategy": "expand",
+  "out": "docs/api",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "none",
+  "githubPages": false,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "hideGenerator": true,
+  "name": "Squadventure API",
+  "includeVersion": false,
+  "navigationLinks": {
+    "Wiki": "/docs/wiki/Home.md",
+    "GitHub": "https://github.com/ctonyperry/squadventure"
+  }
+}
