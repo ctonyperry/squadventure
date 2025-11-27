@@ -1,6 +1,16 @@
-# Squadventure - AI Dungeon Master
+<div align="center">
+  <img src="assets/logo.png" alt="Squadventure" width="400">
 
-A local, voice-driven AI game guide for kids. Real-time speech interaction, adaptive storytelling, pseudo–full-duplex audio, and a modular rules engine inspired by classic tabletop RPGs. Built with a local LLM, structured state tracking, and flexible narration and world logic.
+  # Squadventure
+
+  **AI Dungeon Master for Kids**
+
+  A voice-driven AI game guide with real-time speech interaction, adaptive storytelling, and a modular rules engine inspired by classic tabletop RPGs.
+
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+</div>
+
+---
 
 ## Features
 
