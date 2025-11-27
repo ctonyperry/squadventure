@@ -15,8 +15,8 @@ Squadventure is being developed in phases, each building on the previous to crea
 | Phase 2.5: Extended Mechanics | ✅ Complete | Spells, rests, XP, death saves, monsters |
 | Phase 3: Game System Abstraction | ✅ Complete | Extract D&D 5e to configs |
 | Phase 4: Procedural Generation | ✅ Complete | Content generators |
-| **[Phase 5: World Overlay System](https://github.com/users/ctonyperry/projects/4)** | 📋 Planned | Campaign settings |
-| [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) | 📋 Planned | Agent-driven world creation |
+| Phase 5: World Overlay System | ✅ Complete | Campaign settings |
+| **[Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5)** | 📋 Planned | Agent-driven world creation |
 | [Phase 7: Polish & Scale](https://github.com/users/ctonyperry/projects/6) | 📋 Planned | API, multiplayer, optimization |
 
 ---
@@ -129,7 +129,7 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 ---
 
-### [Phase 5: World Overlay System](https://github.com/users/ctonyperry/projects/4) 📋 PLANNED
+### Phase 5: World Overlay System ✅ COMPLETE
 
 **Goal**: Support different campaign settings
 
@@ -139,25 +139,33 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 │  WORLD LAYER (Content)              │
 │  - Locations, NPCs, lore, factions  │
 ├─────────────────────────────────────┤
-│  ADAPTATION LAYER (Bridge)          │
+│  ADAPTATION LAYER (Overlay)         │
 │  - Terminology mapping              │
 │  - Feature restrictions/reskins     │
+│  - DM guidance injection            │
 ├─────────────────────────────────────┤
-│  RULES LAYER (Mechanics)            │
-│  - Core game system (D&D 5e)        │
+│  RULES LAYER (GameSystem)           │
+│  - Core mechanics (D&D 5e)          │
 └─────────────────────────────────────┘
 ```
 
-**Features**:
-- Terminology mapping (gold → credits)
-- Race/class restrictions for settings
-- DM guidance injection for tone
-- Custom monsters, items, spells per setting
+**Completed Components**:
+- ✅ **World Overlay Architecture** - Full type system and OverlayManager ([#19](https://github.com/ctonyperry/squadventure/issues/19))
+- ✅ **Terminology Mapping** - Currency, magic, races, classes, items ([#20](https://github.com/ctonyperry/squadventure/issues/20))
+- ✅ **DM Guidance Injection** - Tone, themes, vocabulary, naming ([#21](https://github.com/ctonyperry/squadventure/issues/21))
 
-**Issues**:
-- [#19: World Overlay Architecture](https://github.com/ctonyperry/squadventure/issues/19)
-- [#20: Terminology Mapping System](https://github.com/ctonyperry/squadventure/issues/20)
-- [#21: DM Guidance Injection](https://github.com/ctonyperry/squadventure/issues/21)
+**Features**:
+- Terminology mapping (gold → credits, spell → power)
+- Race/class restrictions and reskins for settings
+- Custom monsters, items, spells per setting
+- DM guidance with tone, themes, vocabulary, naming conventions
+- Overlay inheritance and merging support
+
+**Sample Overlays**:
+- `dark-fantasy.json` - Grimdark tone, harsh world rules
+- `sci-fi-reskin.json` - Space opera terminology for D&D mechanics
+
+**Deliverable**: Complete overlay system for adapting D&D 5e to any campaign setting
 
 ---
 
@@ -225,13 +233,13 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 | [#14](https://github.com/ctonyperry/squadventure/issues/14) | Subclass Features | ✅ Closed |
 | [#15](https://github.com/ctonyperry/squadventure/issues/15) | Treasure & Loot Tables | ✅ Closed |
 | [#17](https://github.com/ctonyperry/squadventure/issues/17) | Environmental Effects | ✅ Closed |
+| [#19](https://github.com/ctonyperry/squadventure/issues/19) | World Overlay Architecture | ✅ Closed |
+| [#20](https://github.com/ctonyperry/squadventure/issues/20) | Terminology Mapping | ✅ Closed |
+| [#21](https://github.com/ctonyperry/squadventure/issues/21) | DM Guidance Injection | ✅ Closed |
 
 ### Planned Features
 | Issue | Title | Phase |
 |-------|-------|-------|
-| [#19](https://github.com/ctonyperry/squadventure/issues/19) | World Overlay Architecture | 5 |
-| [#20](https://github.com/ctonyperry/squadventure/issues/20) | Terminology Mapping | 5 |
-| [#21](https://github.com/ctonyperry/squadventure/issues/21) | DM Guidance Injection | 5 |
 | [#7](https://github.com/ctonyperry/squadventure/issues/7) | Campaign & Story Arc Types | 6 |
 | [#8](https://github.com/ctonyperry/squadventure/issues/8) | React Dashboard (Zustand) | 6 |
 | [#9](https://github.com/ctonyperry/squadventure/issues/9) | World Generation Agent | 6 |
