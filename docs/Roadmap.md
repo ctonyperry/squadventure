@@ -169,21 +169,22 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 ---
 
-### [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) 📋 PLANNED
+### [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) 🔄 IN PROGRESS
 
 **Goal**: Agent-driven complete world creation
 
-**Components**:
+**Completed**:
+- ✅ **Campaign & Story Arc Types** - Full campaign management system ([#7](https://github.com/ctonyperry/squadventure/issues/7))
+- ✅ **NPC Memory & Relationships** - Relationship tracking and faction intelligence ([#16](https://github.com/ctonyperry/squadventure/issues/16))
+
+**Remaining**:
+- [#8: React Dashboard for Game State Visibility](https://github.com/ctonyperry/squadventure/issues/8)
+- [#9: World Generation Agent Architecture](https://github.com/ctonyperry/squadventure/issues/9)
+
+**Future Components**:
 - RAG infrastructure (pgvector, embeddings)
 - Campaign structure generator (arcs, BBEG, factions)
 - World population using procedural generators
-- React Dashboard for visualization
-
-**Issues**:
-- [#7: Campaign & Story Arc Types](https://github.com/ctonyperry/squadventure/issues/7)
-- [#8: React Dashboard for Game State Visibility](https://github.com/ctonyperry/squadventure/issues/8)
-- [#9: World Generation Agent Architecture](https://github.com/ctonyperry/squadventure/issues/9)
-- [#16: NPC Memory & Relationships](https://github.com/ctonyperry/squadventure/issues/16)
 
 ---
 
