@@ -12,7 +12,9 @@
     "dev:client": "pnpm --filter @ai-dm/web-client dev",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "docs:api": "typedoc",
+    "docs:api:watch": "typedoc --watch"
   },
   "keywords": ["dnd", "ai", "dungeon-master", "llm", "tabletop"],
   "author": "",
@@ -20,5 +22,9 @@
   "packageManager": "pnpm@10.15.1",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "typedoc": "^0.25.0",
+    "typedoc-plugin-markdown": "^4.0.0"
   }
 }
