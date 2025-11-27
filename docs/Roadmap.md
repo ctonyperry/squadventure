@@ -84,7 +84,7 @@ Squadventure is being developed in phases, each building on the previous to crea
   - `system.json` - System metadata
 - ✅ `GameSystem` interface defined
 - ✅ `Dnd5eGameSystem` implementation complete
-- 📋 Optional: Migrate existing code to use GameSystem
+- 🔄 [#18: Migrate existing code to use GameSystem](https://github.com/ctonyperry/squadventure/issues/18)
 
 **Key Interfaces**:
 ```typescript
@@ -124,6 +124,7 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 **Design Philosophy**: Algorithms generate structure, LLM adds flavor
 
 **Issues**:
+- [#6: Session Persistence (SQLite)](https://github.com/ctonyperry/squadventure/issues/6) - **Foundational**
 - [#10: Conditions Manager (Status Effects)](https://github.com/ctonyperry/squadventure/issues/10)
 - [#12: Expand Spell Knowledge Base](https://github.com/ctonyperry/squadventure/issues/12)
 - [#13: Encounter Difficulty Calculator](https://github.com/ctonyperry/squadventure/issues/13)
@@ -187,13 +188,11 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 **Components**:
 - Web API (Fastify REST + WebSocket)
 - Multi-model tiering for cost optimization
-- Session persistence
-- Multiplayer support
+- Multiplayer support (party mode)
 - Voice integration prep
 
 **Issues**:
-- [#6: Implement Session Persistence (Save/Load)](https://github.com/ctonyperry/squadventure/issues/6)
-- [#11: Multi-Player Party Support](https://github.com/ctonyperry/squadventure/issues/11)
+- [#11: Multi-Player Party Support](https://github.com/ctonyperry/squadventure/issues/11) - Multiple players, one DM, shared party
 
 ---
 
@@ -224,18 +223,19 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 ### Planned Features
 | Issue | Title | Phase |
 |-------|-------|-------|
-| [#6](https://github.com/ctonyperry/squadventure/issues/6) | Session Persistence | 7 |
-| [#7](https://github.com/ctonyperry/squadventure/issues/7) | Campaign & Story Arc Types | 6 |
-| [#8](https://github.com/ctonyperry/squadventure/issues/8) | React Dashboard | 6 |
-| [#9](https://github.com/ctonyperry/squadventure/issues/9) | World Generation Agent | 6 |
+| [#18](https://github.com/ctonyperry/squadventure/issues/18) | Migrate to GameSystem | 3 |
+| [#6](https://github.com/ctonyperry/squadventure/issues/6) | Session Persistence (SQLite) | 4 |
 | [#10](https://github.com/ctonyperry/squadventure/issues/10) | Conditions Manager | 4 |
-| [#11](https://github.com/ctonyperry/squadventure/issues/11) | Multi-Player Support | 7 |
 | [#12](https://github.com/ctonyperry/squadventure/issues/12) | Expand Spell Knowledge Base | 4 |
 | [#13](https://github.com/ctonyperry/squadventure/issues/13) | Encounter Difficulty Calculator | 4 |
 | [#14](https://github.com/ctonyperry/squadventure/issues/14) | Subclass Features | 4 |
 | [#15](https://github.com/ctonyperry/squadventure/issues/15) | Treasure & Loot Tables | 4 |
-| [#16](https://github.com/ctonyperry/squadventure/issues/16) | NPC Memory & Relationships | 6 |
 | [#17](https://github.com/ctonyperry/squadventure/issues/17) | Environmental Effects | 4 |
+| [#7](https://github.com/ctonyperry/squadventure/issues/7) | Campaign & Story Arc Types | 6 |
+| [#8](https://github.com/ctonyperry/squadventure/issues/8) | React Dashboard (Zustand) | 6 |
+| [#9](https://github.com/ctonyperry/squadventure/issues/9) | World Generation Agent | 6 |
+| [#16](https://github.com/ctonyperry/squadventure/issues/16) | NPC Memory & Relationships | 6 |
+| [#11](https://github.com/ctonyperry/squadventure/issues/11) | Multi-Player Party Mode | 7 |
 
 ---
 
