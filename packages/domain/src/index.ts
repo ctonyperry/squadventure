@@ -46,3 +46,5 @@ export {
   getDnd5eSystem,
   createDnd5eSystem,
 } from './system/index.js';
+
+export * from './overlay/index.js';

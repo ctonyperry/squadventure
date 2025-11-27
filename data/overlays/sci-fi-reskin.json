@@ -1,0 +1,216 @@
+{
+  "version": "1.0.0",
+  "overlay": {
+    "id": "sci-fi-reskin",
+    "name": "Sci-Fi Reskin",
+    "description": "D&D 5e mechanics reskinned for a space opera setting.",
+    "settingDescription": "This overlay reskins standard D&D fantasy elements into a science fiction setting. Magic becomes technology and psionics. Swords become energy blades. The core mechanics remain unchanged, but the flavor transforms the experience into an interstellar adventure.",
+    "version": "1.0.0",
+    "author": "Squadventure Team",
+    "baseSystem": "dnd5e",
+
+    "terminology": {
+      "currency": {
+        "gold": "credits",
+        "silver": "chips",
+        "copper": "bits",
+        "platinum": "stellar credits",
+        "electrum": "half-credits",
+        "gp": "cr",
+        "sp": "ch",
+        "cp": "bt"
+      },
+      "magic": {
+        "spell": "power",
+        "cantrip": "minor ability",
+        "arcane": "psionic",
+        "divine": "nanotech",
+        "spellcasting": "power manifestation",
+        "spell slot": "power charge",
+        "magic item": "tech device",
+        "enchanted": "enhanced",
+        "magical": "technological"
+      },
+      "races": {
+        "human": "Terran",
+        "elf": "Aeldar",
+        "dwarf": "Belter",
+        "halfling": "Spacer",
+        "dragonborn": "Draconian",
+        "gnome": "Synth",
+        "half-elf": "Hybrid",
+        "half-orc": "Brute",
+        "tiefling": "Void-touched"
+      },
+      "classes": {
+        "fighter": "Soldier",
+        "wizard": "Psion",
+        "cleric": "Medtech",
+        "rogue": "Operative"
+      },
+      "items": {
+        "potion": "stim",
+        "scroll": "datapad",
+        "wand": "blaster",
+        "staff": "power lance",
+        "ring": "neural implant",
+        "amulet": "interface chip",
+        "sword": "energy blade",
+        "bow": "pulse rifle",
+        "armor": "body armor",
+        "shield": "energy barrier"
+      },
+      "equipment": {
+        "longsword": "energy saber",
+        "shortsword": "vibroblade",
+        "dagger": "monofilament knife",
+        "greataxe": "power hammer",
+        "longbow": "sniper rifle",
+        "shortbow": "carbine",
+        "crossbow": "pistol",
+        "plate armor": "power armor",
+        "chain mail": "tactical armor",
+        "leather armor": "flight suit"
+      },
+      "conditions": {},
+      "custom": {
+        "tavern": "cantina",
+        "inn": "station hub",
+        "dungeon": "derelict ship",
+        "castle": "space station",
+        "forest": "biodome",
+        "mountain": "asteroid",
+        "ocean": "void",
+        "dragon": "leviathan",
+        "goblin": "xeno-scavenger",
+        "orc": "raider"
+      }
+    },
+
+    "restrictions": {
+      "allowedRaces": [],
+      "allowedClasses": [],
+      "allowedBackgrounds": [],
+      "allowedSubclasses": {}
+    },
+
+    "raceReskins": {
+      "elf": {
+        "displayName": "Aeldar",
+        "description": "An ancient spacefaring species known for their longevity and psionic abilities. The Aeldar were among the first to achieve interstellar travel and their ruins can be found throughout the galaxy.",
+        "renamedTraits": {
+          "Darkvision": "Low-Light Sensors",
+          "Fey Ancestry": "Psionic Resistance",
+          "Trance": "Stasis Rest"
+        },
+        "traitFlavor": {
+          "Darkvision": "Cybernetic ocular implants standard to all Aeldar.",
+          "Trance": "Aeldar enter a low-power stasis state instead of sleeping."
+        }
+      },
+      "dwarf": {
+        "displayName": "Belter",
+        "description": "Humans adapted over generations to life in asteroid mining colonies. Shorter and stockier than Terrans, with enhanced constitution for harsh environments.",
+        "renamedTraits": {
+          "Darkvision": "Tunnel Vision Implants",
+          "Dwarven Resilience": "Hazard Conditioning",
+          "Stonecunning": "Structural Analysis"
+        }
+      },
+      "human": {
+        "displayName": "Terran",
+        "description": "Baseline humans from Earth and the core colonies. Adaptable and ambitious, they form the majority of the galactic population."
+      }
+    },
+
+    "classReskins": {
+      "wizard": {
+        "displayName": "Psion",
+        "description": "Individuals with awakened psionic abilities, capable of manipulating reality through mental power alone. Their 'spells' are actually psionic manifestations.",
+        "renamedFeatures": {
+          "Spellcasting": "Psionic Manifestation",
+          "Arcane Recovery": "Mental Recharge",
+          "Spell Mastery": "Power Mastery"
+        }
+      },
+      "cleric": {
+        "displayName": "Medtech",
+        "description": "Specialists in advanced medical nanobots and healing technology. Their 'divine' abilities come from cutting-edge biotech implants.",
+        "renamedFeatures": {
+          "Spellcasting": "Nanotech Deployment",
+          "Channel Divinity": "Emergency Protocol"
+        }
+      },
+      "fighter": {
+        "displayName": "Soldier",
+        "description": "Professional combatants trained in modern weapons and tactics. May serve in military forces or work as mercenaries.",
+        "renamedFeatures": {
+          "Fighting Style": "Combat Training",
+          "Second Wind": "Combat Stim",
+          "Action Surge": "Adrenaline Boost"
+        }
+      },
+      "rogue": {
+        "displayName": "Operative",
+        "description": "Covert specialists skilled in infiltration, hacking, and precision strikes. Often employed by corporations or intelligence agencies.",
+        "renamedFeatures": {
+          "Sneak Attack": "Precision Strike",
+          "Thieves' Cant": "Operative Codes",
+          "Cunning Action": "Quick Reflexes"
+        }
+      }
+    },
+
+    "customMonsters": [],
+    "customItems": [],
+    "customSpells": [],
+
+    "dmGuidance": {
+      "tone": "adventure",
+      "settingRules": [
+        "All 'magic' is actually technology or psionics",
+        "FTL travel exists but is expensive and dangerous",
+        "Alien species are common in civilized space",
+        "Corporations hold significant political power",
+        "The frontier is lawless and dangerous"
+      ],
+      "namingConventions": [
+        {
+          "culture": "Terran (Human)",
+          "description": "Multicultural names from Earth traditions",
+          "examples": ["Marcus Chen", "Yuki Okonkwo", "Dmitri Santos", "Aisha Williams"]
+        },
+        {
+          "culture": "Aeldar",
+          "description": "Flowing names with apostrophes and diacritical marks",
+          "examples": ["Val'thrien", "Aer'issa", "Kael'dorei", "Mira'thel"]
+        },
+        {
+          "culture": "Ships and Stations",
+          "description": "Descriptive or mythological names",
+          "examples": ["The Wayward Hope", "Station Prometheus", "ISV Horizon's Edge"]
+        }
+      ],
+      "themes": {
+        "primaryThemes": ["exploration", "frontier life", "corporate intrigue"],
+        "secondaryThemes": ["ancient mysteries", "found family", "survival"],
+        "sensitiveTopics": [],
+        "motifs": ["stars", "void", "ancient tech", "diverse crews"]
+      },
+      "vocabulary": {
+        "preferredTerms": ["station", "sector", "void", "jump", "credits", "ops", "tech"],
+        "avoidedTerms": ["magic", "spell", "wizard", "enchanted"],
+        "settingJargon": {
+          "The Jump": "FTL travel between star systems",
+          "Void-born": "People born in space, never on a planet",
+          "Core Worlds": "The wealthy, civilized inner systems",
+          "The Rim": "Frontier space, largely lawless"
+        }
+      },
+      "customInstructions": "Always use sci-fi terminology instead of fantasy. Describe technology, starships, and alien worlds. Combat involves energy weapons and high-tech armor. 'Magic' effects should be described as psionic phenomena or advanced technology.",
+      "roleplayGuidance": "NPCs should reference galactic politics, corporate interests, and space travel. Cantinas replace taverns, space stations replace cities. Wilderness is the void between stars."
+    },
+
+    "tags": ["sci-fi", "space-opera", "reskin", "technology"]
+  }
+}

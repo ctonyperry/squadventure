@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "overlay": {
+    "id": "dark-fantasy",
+    "name": "Dark Fantasy",
+    "description": "A grim and perilous world where hope is rare and danger lurks everywhere.",
+    "settingDescription": "This is a dark fantasy setting where the world is harsh and unforgiving. Magic comes at a cost, monsters are terrifying, and death is permanent and meaningful. Heroes are rare, and even they struggle against overwhelming odds. The tone should be serious, with moments of dark humor and genuine dread.",
+    "version": "1.0.0",
+    "author": "Squadventure Team",
+    "baseSystem": "dnd5e",
+
+    "terminology": {
+      "currency": {},
+      "magic": {
+        "spell": "incantation",
+        "cantrip": "minor hex",
+        "arcane": "forbidden",
+        "divine": "sacred"
+      },
+      "races": {},
+      "classes": {
+        "wizard": "arcanist"
+      },
+      "items": {
+        "potion": "elixir",
+        "scroll": "grimoire fragment"
+      },
+      "equipment": {},
+      "conditions": {},
+      "custom": {
+        "tavern": "wayhouse",
+        "inn": "refuge",
+        "adventurer": "wanderer"
+      }
+    },
+
+    "restrictions": {
+      "allowedRaces": [],
+      "allowedClasses": [],
+      "allowedBackgrounds": [],
+      "allowedSubclasses": {}
+    },
+
+    "raceReskins": {},
+    "classReskins": {},
+
+    "customMonsters": [],
+    "customItems": [],
+    "customSpells": [],
+
+    "dmGuidance": {
+      "tone": "grimdark",
+      "settingRules": [
+        "Magic is feared and mistrusted by common folk",
+        "Death is permanent - resurrection is nearly impossible",
+        "Resources are scarce; gold is valuable",
+        "Trust is earned, never given freely",
+        "The wilderness is deadly; travel is dangerous"
+      ],
+      "namingConventions": [
+        {
+          "culture": "Human (Common)",
+          "description": "Germanic and Slavic inspired names with harsh consonants",
+          "examples": ["Vladric", "Korven", "Marta", "Gregor", "Elsbeth"],
+          "suffixes": ["-ic", "-ven", "-mir", "-eth"]
+        },
+        {
+          "culture": "Elven",
+          "description": "Elongated vowels with whispered quality",
+          "examples": ["Aelindra", "Vaeloris", "Thirandiel", "Maeven"],
+          "prefixes": ["Ael-", "Vae-", "Thir-", "Mae-"]
+        }
+      ],
+      "themes": {
+        "primaryThemes": ["survival", "moral ambiguity", "corruption", "sacrifice"],
+        "secondaryThemes": ["hope against odds", "legacy", "redemption"],
+        "sensitiveTopics": ["graphic violence", "body horror", "despair"],
+        "motifs": ["ravens", "storms", "decay", "flickering flames", "ancient ruins"]
+      },
+      "vocabulary": {
+        "preferredTerms": ["grim", "perilous", "forsaken", "blighted", "ancient", "festering", "harrowing"],
+        "avoidedTerms": ["fun", "silly", "whimsical", "magical", "sparkle"],
+        "settingJargon": {
+          "The Blight": "A spreading corruption that twists living things",
+          "Soulbound": "Magically enslaved to another's will",
+          "The Old Ways": "Ancient traditions predating current civilization",
+          "Marked": "Bearing signs of supernatural corruption"
+        }
+      },
+      "customInstructions": "Describe environments with a sense of decay and foreboding. Combat should feel dangerous and consequential. NPCs should have complex motivations and moral grey areas. Victories should feel earned, not given.",
+      "roleplayGuidance": "NPCs are generally suspicious of strangers. Prices are higher, information is guarded. Friendly encounters are rare and should feel significant. Monsters are terrifying, not comedic."
+    },
+
+    "tags": ["dark", "horror", "grimdark", "low-fantasy"]
+  }
+}
