@@ -574,6 +574,216 @@ Beak: +7 to hit, 5 ft, 1d10+5 piercing
 Claws: +7 to hit, 5 ft, 2d8+5 slashing`,
     keywords: ['owlbear', 'monstrosity', 'multiattack', 'beast', 'dangerous'],
   },
+  {
+    id: 'monster-kobold',
+    category: 'Monsters',
+    title: 'Kobold',
+    content: `KOBOLD (Small humanoid, lawful evil)
+AC: 12
+HP: 5 (2d6-2)
+Speed: 30 ft
+STR 7 (-2) DEX 15 (+2) CON 9 (-1) INT 8 (-1) WIS 7 (-2) CHA 8 (-1)
+Senses: Darkvision 60 ft, passive Perception 8
+Languages: Common, Draconic
+CR: 1/8 (25 XP)
+
+SUNLIGHT SENSITIVITY: Disadvantage on attacks and Perception in sunlight.
+PACK TACTICS: Advantage on attack if ally is within 5 ft of target and ally isn't incapacitated.
+
+ACTIONS:
+Dagger: +4 to hit, 5 ft, 1d4+2 piercing
+Sling: +4 to hit, range 30/120 ft, 1d4+2 bludgeoning`,
+    keywords: ['kobold', 'humanoid', 'pack tactics', 'sunlight sensitivity', 'draconic'],
+  },
+  {
+    id: 'monster-giant-rat',
+    category: 'Monsters',
+    title: 'Giant Rat',
+    content: `GIANT RAT (Small beast, unaligned)
+AC: 12
+HP: 7 (2d6)
+Speed: 30 ft
+STR 7 (-2) DEX 15 (+2) CON 11 (+0) INT 2 (-4) WIS 10 (+0) CHA 4 (-3)
+Senses: Darkvision 60 ft, passive Perception 10
+CR: 1/8 (25 XP)
+
+KEEN SMELL: Advantage on Perception checks using smell.
+PACK TACTICS: Advantage on attack if ally is within 5 ft of target and ally isn't incapacitated.
+
+ACTIONS:
+Bite: +4 to hit, 5 ft, 1d4+2 piercing`,
+    keywords: ['rat', 'giant rat', 'beast', 'pack tactics', 'vermin', 'sewer'],
+  },
+  {
+    id: 'monster-stirge',
+    category: 'Monsters',
+    title: 'Stirge',
+    content: `STIRGE (Tiny beast, unaligned)
+AC: 14 (natural armor)
+HP: 2 (1d4)
+Speed: 10 ft, fly 40 ft
+STR 4 (-3) DEX 16 (+3) CON 11 (+0) INT 2 (-4) WIS 8 (-1) CHA 6 (-2)
+Senses: Darkvision 60 ft, passive Perception 9
+CR: 1/8 (25 XP)
+
+ACTIONS:
+Blood Drain: +5 to hit, 5 ft, 1d4+3 piercing. Stirge attaches to target. While attached, deals 1d4+3 necrotic damage at start of each of its turns.
+
+Attached stirge can be removed by target or another creature using action (DC 10 STR). The stirge detaches after draining 10 HP or if target dies.`,
+    keywords: ['stirge', 'beast', 'blood drain', 'flying', 'attach', 'vampire'],
+  },
+  {
+    id: 'monster-bandit',
+    category: 'Monsters',
+    title: 'Bandit',
+    content: `BANDIT (Medium humanoid, any non-lawful)
+AC: 12 (leather armor)
+HP: 11 (2d8+2)
+Speed: 30 ft
+STR 11 (+0) DEX 12 (+1) CON 12 (+1) INT 10 (+0) WIS 10 (+0) CHA 10 (+0)
+Senses: passive Perception 10
+Languages: Any one language (usually Common)
+CR: 1/8 (25 XP)
+
+ACTIONS:
+Scimitar: +3 to hit, 5 ft, 1d6+1 slashing
+Light Crossbow: +3 to hit, range 80/320 ft, 1d8+1 piercing`,
+    keywords: ['bandit', 'humanoid', 'criminal', 'thief', 'robber', 'outlaw'],
+  },
+  {
+    id: 'monster-ghoul',
+    category: 'Monsters',
+    title: 'Ghoul',
+    content: `GHOUL (Medium undead, chaotic evil)
+AC: 12
+HP: 22 (5d8)
+Speed: 30 ft
+STR 13 (+1) DEX 15 (+2) CON 10 (+0) INT 7 (-2) WIS 10 (+0) CHA 6 (-2)
+Damage Immunities: Poison
+Condition Immunities: Charmed, Exhaustion, Poisoned
+Senses: Darkvision 60 ft, passive Perception 10
+Languages: Common
+CR: 1 (200 XP)
+
+ACTIONS:
+Bite: +2 to hit, 5 ft, 2d6+2 piercing
+Claws: +4 to hit, 5 ft, 2d4+2 slashing. Target must succeed DC 10 CON save or be paralyzed for 1 minute. Target can repeat save at end of each turn. Elves are immune to this paralysis.`,
+    keywords: ['ghoul', 'undead', 'paralysis', 'claw', 'bite', 'charnel'],
+  },
+  {
+    id: 'monster-bugbear',
+    category: 'Monsters',
+    title: 'Bugbear',
+    content: `BUGBEAR (Medium humanoid, chaotic evil)
+AC: 16 (hide armor, shield)
+HP: 27 (5d8+5)
+Speed: 30 ft
+STR 15 (+2) DEX 14 (+2) CON 13 (+1) INT 8 (-1) WIS 11 (+0) CHA 9 (-1)
+Skills: Stealth +6, Survival +2
+Senses: Darkvision 60 ft, passive Perception 10
+Languages: Common, Goblin
+CR: 1 (200 XP)
+
+BRUTE: Melee weapon deals one extra die of damage (included in attack).
+SURPRISE ATTACK: If bugbear surprises a creature and hits on first turn, extra 2d6 damage.
+
+ACTIONS:
+Morningstar: +4 to hit, 5 ft, 2d8+2 piercing
+Javelin: +4 to hit, range 30/120 ft, 2d6+2 piercing`,
+    keywords: ['bugbear', 'humanoid', 'goblinoid', 'brute', 'surprise attack', 'ambush'],
+  },
+  {
+    id: 'monster-dire-wolf',
+    category: 'Monsters',
+    title: 'Dire Wolf',
+    content: `DIRE WOLF (Large beast, unaligned)
+AC: 14 (natural armor)
+HP: 37 (5d10+10)
+Speed: 50 ft
+STR 17 (+3) DEX 15 (+2) CON 15 (+2) INT 3 (-4) WIS 12 (+1) CHA 7 (-2)
+Skills: Perception +3, Stealth +4
+Senses: passive Perception 13
+CR: 1 (200 XP)
+
+KEEN HEARING AND SMELL: Advantage on Perception checks using hearing or smell.
+PACK TACTICS: Advantage on attack if ally is within 5 ft of target and ally isn't incapacitated.
+
+ACTIONS:
+Bite: +5 to hit, 5 ft, 2d6+3 piercing. Target must succeed DC 13 STR save or be knocked prone.`,
+    keywords: ['dire wolf', 'wolf', 'beast', 'pack tactics', 'knockdown', 'large'],
+  },
+  {
+    id: 'monster-wight',
+    category: 'Monsters',
+    title: 'Wight',
+    content: `WIGHT (Medium undead, neutral evil)
+AC: 14 (studded leather)
+HP: 45 (6d8+18)
+Speed: 30 ft
+STR 15 (+2) DEX 14 (+2) CON 16 (+3) INT 10 (+0) WIS 13 (+1) CHA 15 (+2)
+Skills: Perception +3, Stealth +4
+Damage Resistances: Necrotic; Bludgeoning, Piercing, Slashing from nonmagical weapons not silvered
+Damage Immunities: Poison
+Condition Immunities: Exhaustion, Poisoned
+Senses: Darkvision 60 ft, passive Perception 13
+Languages: Languages it knew in life
+CR: 3 (700 XP)
+
+SUNLIGHT SENSITIVITY: Disadvantage on attacks and Perception in sunlight.
+
+ACTIONS:
+Multiattack: Two longsword attacks or two longbow attacks.
+Life Drain: +4 to hit, 5 ft, 1d6+2 necrotic. Target must succeed DC 13 CON save or HP max reduced by damage taken. Target dies if reduced to 0 HP max. Reduction lasts until long rest.
+Longsword: +4 to hit, 5 ft, 1d8+2 slashing
+Longbow: +4 to hit, range 150/600 ft, 1d8+2 piercing`,
+    keywords: ['wight', 'undead', 'life drain', 'necrotic', 'sunlight sensitivity', 'intelligent undead'],
+  },
+  {
+    id: 'monster-minotaur',
+    category: 'Monsters',
+    title: 'Minotaur',
+    content: `MINOTAUR (Large monstrosity, chaotic evil)
+AC: 14 (natural armor)
+HP: 76 (9d10+27)
+Speed: 40 ft
+STR 18 (+4) DEX 11 (+0) CON 16 (+3) INT 6 (-2) WIS 16 (+3) CHA 9 (-1)
+Skills: Perception +7
+Senses: Darkvision 60 ft, passive Perception 17
+Languages: Abyssal
+CR: 3 (700 XP)
+
+CHARGE: If moves at least 10 ft straight toward target and hits with gore, extra 2d8 piercing. Target must succeed DC 14 STR save or be pushed 10 ft and knocked prone.
+LABYRINTHINE RECALL: Can perfectly recall any path it has traveled.
+RECKLESS: At start of turn, can gain advantage on all melee attacks, but attacks against it have advantage until next turn.
+
+ACTIONS:
+Greataxe: +6 to hit, 5 ft, 2d12+4 slashing
+Gore: +6 to hit, 5 ft, 2d8+4 piercing`,
+    keywords: ['minotaur', 'monstrosity', 'charge', 'labyrinth', 'maze', 'horns', 'reckless'],
+  },
+  {
+    id: 'monster-troll',
+    category: 'Monsters',
+    title: 'Troll',
+    content: `TROLL (Large giant, chaotic evil)
+AC: 15 (natural armor)
+HP: 84 (8d10+40)
+Speed: 30 ft
+STR 18 (+4) DEX 13 (+1) CON 20 (+5) INT 7 (-2) WIS 9 (-1) CHA 7 (-2)
+Skills: Perception +2
+Senses: Darkvision 60 ft, passive Perception 12
+Languages: Giant
+CR: 5 (1,800 XP)
+
+KEEN SMELL: Advantage on Perception checks using smell.
+REGENERATION: Regains 10 HP at start of its turn. If takes acid or fire damage, this trait doesn't function at start of its next turn. Dies only if starts turn at 0 HP and doesn't regenerate.
+
+ACTIONS:
+Multiattack: Three attacks: one bite and two claws.
+Bite: +7 to hit, 5 ft, 1d6+4 piercing
+Claw: +7 to hit, 5 ft, 2d6+4 slashing`,
+    keywords: ['troll', 'giant', 'regeneration', 'fire', 'acid', 'multiattack', 'dangerous'],
+  },
 ];
 
 /**
