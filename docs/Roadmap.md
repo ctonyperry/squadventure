@@ -14,10 +14,10 @@ Squadventure is being developed in phases, each building on the previous to crea
 | Phase 2: Mechanics | ✅ Complete | Combat, dice rolls, character sheets |
 | Phase 2.5: Extended Mechanics | ✅ Complete | Spells, rests, XP, death saves, monsters |
 | **Phase 3: Game System Abstraction** | 🔄 In Progress | Extract D&D 5e to configs |
-| Phase 4: Procedural Generation | 📋 Planned | Content generators |
-| Phase 5: World Overlay System | 📋 Planned | Campaign settings |
-| Phase 6: World Generation | 📋 Planned | Agent-driven world creation |
-| Phase 7: Polish & Scale | 📋 Planned | API, multiplayer, optimization |
+| [Phase 4: Procedural Generation](https://github.com/users/ctonyperry/projects/3) | 📋 Planned | Content generators |
+| [Phase 5: World Overlay System](https://github.com/users/ctonyperry/projects/4) | 📋 Planned | Campaign settings |
+| [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) | 📋 Planned | Agent-driven world creation |
+| [Phase 7: Polish & Scale](https://github.com/users/ctonyperry/projects/6) | 📋 Planned | API, multiplayer, optimization |
 
 ---
 
@@ -110,7 +110,7 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 ---
 
-### Phase 4: Procedural Generation 📋 PLANNED
+### [Phase 4: Procedural Generation](https://github.com/users/ctonyperry/projects/3) 📋 PLANNED
 
 **Goal**: Algorithmic content generation for consistent quality
 
@@ -123,13 +123,17 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 **Design Philosophy**: Algorithms generate structure, LLM adds flavor
 
-**Related Issues**:
+**Issues**:
+- [#10: Conditions Manager (Status Effects)](https://github.com/ctonyperry/squadventure/issues/10)
+- [#12: Expand Spell Knowledge Base](https://github.com/ctonyperry/squadventure/issues/12)
 - [#13: Encounter Difficulty Calculator](https://github.com/ctonyperry/squadventure/issues/13)
+- [#14: Subclass Features](https://github.com/ctonyperry/squadventure/issues/14)
 - [#15: Treasure & Loot Tables](https://github.com/ctonyperry/squadventure/issues/15)
+- [#17: Environmental Effects](https://github.com/ctonyperry/squadventure/issues/17)
 
 ---
 
-### Phase 5: World Overlay System 📋 PLANNED
+### [Phase 5: World Overlay System](https://github.com/users/ctonyperry/projects/4) 📋 PLANNED
 
 **Goal**: Support different campaign settings
 
@@ -154,9 +158,11 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 - DM guidance injection for tone
 - Custom monsters, items, spells per setting
 
+**Issues**: None yet - architecture design phase
+
 ---
 
-### Phase 6: World & Campaign Generation 📋 PLANNED
+### [Phase 6: World & Campaign Generation](https://github.com/users/ctonyperry/projects/5) 📋 PLANNED
 
 **Goal**: Agent-driven complete world creation
 
@@ -164,24 +170,30 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 - RAG infrastructure (pgvector, embeddings)
 - Campaign structure generator (arcs, BBEG, factions)
 - World population using procedural generators
-- React Dashboard for visualization ([#8](https://github.com/ctonyperry/squadventure/issues/8))
+- React Dashboard for visualization
 
-**Related Issues**:
+**Issues**:
 - [#7: Campaign & Story Arc Types](https://github.com/ctonyperry/squadventure/issues/7)
+- [#8: React Dashboard for Game State Visibility](https://github.com/ctonyperry/squadventure/issues/8)
 - [#9: World Generation Agent Architecture](https://github.com/ctonyperry/squadventure/issues/9)
+- [#16: NPC Memory & Relationships](https://github.com/ctonyperry/squadventure/issues/16)
 
 ---
 
-### Phase 7: Polish & Scale 📋 PLANNED
+### [Phase 7: Polish & Scale](https://github.com/users/ctonyperry/projects/6) 📋 PLANNED
 
 **Goal**: Production-ready, multiplayer-capable
 
 **Components**:
 - Web API (Fastify REST + WebSocket)
 - Multi-model tiering for cost optimization
-- Session persistence ([#6](https://github.com/ctonyperry/squadventure/issues/6))
-- Multiplayer support ([#11](https://github.com/ctonyperry/squadventure/issues/11))
+- Session persistence
+- Multiplayer support
 - Voice integration prep
+
+**Issues**:
+- [#6: Implement Session Persistence (Save/Load)](https://github.com/ctonyperry/squadventure/issues/6)
+- [#11: Multi-Player Party Support](https://github.com/ctonyperry/squadventure/issues/11)
 
 ---
 
@@ -240,4 +252,4 @@ const spellSlots = system.magic.getSpellSlots('wizard', 5);
 
 ---
 
-*Last updated: November 2024*
+*Last updated: November 27, 2024*
