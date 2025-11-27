@@ -1,106 +1,101 @@
 /**
  * Spell slot progression tables for D&D 5e caster classes
+ *
+ * Delegates to GameSystem for all data lookups.
  */
 
 import type { SpellSlots, CharacterSpellcasting, AbilityScores } from '@ai-dm/shared';
+import { getDnd5eSystem } from '../system/index.js';
 
 /**
- * Spell slot progression by level for full casters (Wizard, Cleric, etc.)
- * Index is character level - 1, value is array of slots per spell level
+ * Get the game system singleton
  */
-export const FULL_CASTER_SLOTS: SpellSlots['max'][] = [
-  [2, 0, 0, 0, 0, 0, 0, 0, 0], // Level 1
-  [3, 0, 0, 0, 0, 0, 0, 0, 0], // Level 2
-  [4, 2, 0, 0, 0, 0, 0, 0, 0], // Level 3
-  [4, 3, 0, 0, 0, 0, 0, 0, 0], // Level 4
-  [4, 3, 2, 0, 0, 0, 0, 0, 0], // Level 5
-  [4, 3, 3, 0, 0, 0, 0, 0, 0], // Level 6
-  [4, 3, 3, 1, 0, 0, 0, 0, 0], // Level 7
-  [4, 3, 3, 2, 0, 0, 0, 0, 0], // Level 8
-  [4, 3, 3, 3, 1, 0, 0, 0, 0], // Level 9
-  [4, 3, 3, 3, 2, 0, 0, 0, 0], // Level 10
-  [4, 3, 3, 3, 2, 1, 0, 0, 0], // Level 11
-  [4, 3, 3, 3, 2, 1, 0, 0, 0], // Level 12
-  [4, 3, 3, 3, 2, 1, 1, 0, 0], // Level 13
-  [4, 3, 3, 3, 2, 1, 1, 0, 0], // Level 14
-  [4, 3, 3, 3, 2, 1, 1, 1, 0], // Level 15
-  [4, 3, 3, 3, 2, 1, 1, 1, 0], // Level 16
-  [4, 3, 3, 3, 2, 1, 1, 1, 1], // Level 17
-  [4, 3, 3, 3, 3, 1, 1, 1, 1], // Level 18
-  [4, 3, 3, 3, 3, 2, 1, 1, 1], // Level 19
-  [4, 3, 3, 3, 3, 2, 2, 1, 1], // Level 20
-];
+const getSystem = () => getDnd5eSystem();
 
 /**
- * Half caster progression (Paladin, Ranger) - starts at level 2
- */
-export const HALF_CASTER_SLOTS: SpellSlots['max'][] = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0], // Level 1 (no spells)
-  [2, 0, 0, 0, 0, 0, 0, 0, 0], // Level 2
-  [3, 0, 0, 0, 0, 0, 0, 0, 0], // Level 3
-  [3, 0, 0, 0, 0, 0, 0, 0, 0], // Level 4
-  [4, 2, 0, 0, 0, 0, 0, 0, 0], // Level 5
-  [4, 2, 0, 0, 0, 0, 0, 0, 0], // Level 6
-  [4, 3, 0, 0, 0, 0, 0, 0, 0], // Level 7
-  [4, 3, 0, 0, 0, 0, 0, 0, 0], // Level 8
-  [4, 3, 2, 0, 0, 0, 0, 0, 0], // Level 9
-  [4, 3, 2, 0, 0, 0, 0, 0, 0], // Level 10
-  [4, 3, 3, 0, 0, 0, 0, 0, 0], // Level 11
-  [4, 3, 3, 0, 0, 0, 0, 0, 0], // Level 12
-  [4, 3, 3, 1, 0, 0, 0, 0, 0], // Level 13
-  [4, 3, 3, 1, 0, 0, 0, 0, 0], // Level 14
-  [4, 3, 3, 2, 0, 0, 0, 0, 0], // Level 15
-  [4, 3, 3, 2, 0, 0, 0, 0, 0], // Level 16
-  [4, 3, 3, 3, 1, 0, 0, 0, 0], // Level 17
-  [4, 3, 3, 3, 1, 0, 0, 0, 0], // Level 18
-  [4, 3, 3, 3, 2, 0, 0, 0, 0], // Level 19
-  [4, 3, 3, 3, 2, 0, 0, 0, 0], // Level 20
-];
-
-/**
- * Spellcasting ability by class
- */
-export const CLASS_SPELLCASTING_ABILITY: Record<string, keyof AbilityScores> = {
-  wizard: 'intelligence',
-  cleric: 'wisdom',
-  druid: 'wisdom',
-  bard: 'charisma',
-  sorcerer: 'charisma',
-  warlock: 'charisma',
-  paladin: 'charisma',
-  ranger: 'wisdom',
-};
-
-/**
- * Caster type by class
+ * Caster type - re-export from system
  */
 export type CasterType = 'full' | 'half' | 'none';
 
-export const CLASS_CASTER_TYPE: Record<string, CasterType> = {
-  wizard: 'full',
-  cleric: 'full',
-  druid: 'full',
-  bard: 'full',
-  sorcerer: 'full',
-  warlock: 'full', // Actually pact magic, but simplified
-  paladin: 'half',
-  ranger: 'half',
-  fighter: 'none',
-  rogue: 'none',
-  barbarian: 'none',
-  monk: 'none',
-};
+/**
+ * Full caster spell slots - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().magic.fullCasterSlots instead
+ */
+export const FULL_CASTER_SLOTS = new Proxy([] as SpellSlots['max'][], {
+  get: (_, prop) => {
+    if (prop === 'length') return 20;
+    const idx = Number(prop);
+    if (!isNaN(idx)) return getSystem().magic.fullCasterSlots[idx];
+    return undefined;
+  },
+});
 
 /**
- * Cantrips known by level for various classes
+ * Half caster spell slots - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().magic.halfCasterSlots instead
  */
-export const WIZARD_CANTRIPS_KNOWN: number[] = [
-  3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-];
+export const HALF_CASTER_SLOTS = new Proxy([] as SpellSlots['max'][], {
+  get: (_, prop) => {
+    if (prop === 'length') return 20;
+    const idx = Number(prop);
+    if (!isNaN(idx)) return getSystem().magic.halfCasterSlots[idx];
+    return undefined;
+  },
+});
 
-export const CLERIC_CANTRIPS_KNOWN: number[] = [
-  3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-];
+/**
+ * Spellcasting ability by class - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().magic.spellcastingAbility instead
+ */
+export const CLASS_SPELLCASTING_ABILITY = new Proxy({} as Record<string, keyof AbilityScores>, {
+  get: (_, key: string) => getSystem().magic.spellcastingAbility[key],
+  ownKeys: () => Object.keys(getSystem().magic.spellcastingAbility),
+  getOwnPropertyDescriptor: (_, key: string) => ({
+    enumerable: true,
+    configurable: true,
+    value: getSystem().magic.spellcastingAbility[key as string],
+  }),
+});
+
+/**
+ * Caster type by class - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().magic.casterTypes instead
+ */
+export const CLASS_CASTER_TYPE = new Proxy({} as Record<string, CasterType>, {
+  get: (_, key: string) => getSystem().magic.casterTypes[key],
+  ownKeys: () => Object.keys(getSystem().magic.casterTypes),
+  getOwnPropertyDescriptor: (_, key: string) => ({
+    enumerable: true,
+    configurable: true,
+    value: getSystem().magic.casterTypes[key as string],
+  }),
+});
+
+/**
+ * Cantrips known by level for wizard - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().magic.cantripsKnown.wizard instead
+ */
+export const WIZARD_CANTRIPS_KNOWN = new Proxy([] as number[], {
+  get: (_, prop) => {
+    if (prop === 'length') return 20;
+    const idx = Number(prop);
+    if (!isNaN(idx)) return getSystem().magic.cantripsKnown['wizard']?.[idx];
+    return undefined;
+  },
+});
+
+/**
+ * Cantrips known by level for cleric - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().magic.cantripsKnown.cleric instead
+ */
+export const CLERIC_CANTRIPS_KNOWN = new Proxy([] as number[], {
+  get: (_, prop) => {
+    if (prop === 'length') return 20;
+    const idx = Number(prop);
+    if (!isNaN(idx)) return getSystem().magic.cantripsKnown['cleric']?.[idx];
+    return undefined;
+  },
+});
 
 /**
  * Create empty spell slots
@@ -119,16 +114,8 @@ export function getSpellSlotsForClass(
   className: string,
   level: number
 ): SpellSlots['max'] {
-  const casterType = CLASS_CASTER_TYPE[className.toLowerCase()] ?? 'none';
-
-  if (casterType === 'none' || level < 1) {
-    return [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  }
-
-  const clampedLevel = Math.min(level, 20);
-  const progression = casterType === 'full' ? FULL_CASTER_SLOTS : HALF_CASTER_SLOTS;
-
-  return progression[clampedLevel - 1] ?? [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const system = getSystem();
+  return system.magic.getSpellSlots(className, level) as SpellSlots['max'];
 }
 
 /**
@@ -138,8 +125,7 @@ export function calculateSpellSaveDC(
   abilityScore: number,
   proficiencyBonus: number
 ): number {
-  const abilityMod = Math.floor((abilityScore - 10) / 2);
-  return 8 + proficiencyBonus + abilityMod;
+  return getSystem().combat.calculateSpellSaveDC(abilityScore, proficiencyBonus);
 }
 
 /**
@@ -149,8 +135,7 @@ export function calculateSpellAttackBonus(
   abilityScore: number,
   proficiencyBonus: number
 ): number {
-  const abilityMod = Math.floor((abilityScore - 10) / 2);
-  return proficiencyBonus + abilityMod;
+  return getSystem().combat.calculateSpellAttackBonus(abilityScore, proficiencyBonus);
 }
 
 /**
@@ -162,12 +147,13 @@ export function createSpellcasting(
   abilityScores: AbilityScores,
   proficiencyBonus: number
 ): CharacterSpellcasting | undefined {
-  const casterType = CLASS_CASTER_TYPE[className.toLowerCase()];
-  if (!casterType || casterType === 'none') {
+  const system = getSystem();
+  const casterType = system.magic.getCasterType(className);
+  if (casterType === 'none') {
     return undefined;
   }
 
-  const spellcastingAbility = CLASS_SPELLCASTING_ABILITY[className.toLowerCase()];
+  const spellcastingAbility = system.magic.getSpellcastingAbility(className);
   if (!spellcastingAbility) {
     return undefined;
   }
@@ -176,7 +162,7 @@ export function createSpellcasting(
   const maxSlots = getSpellSlotsForClass(className, level);
 
   // Calculate max prepared spells for prepared casters
-  const abilityMod = Math.floor((abilityScore - 10) / 2);
+  const abilityMod = system.calculateAbilityModifier(abilityScore);
   const maxPrepared = Math.max(1, level + abilityMod);
 
   return {

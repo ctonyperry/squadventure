@@ -1,125 +1,84 @@
 /**
  * D&D 5e Experience Point and Leveling System
+ *
+ * Delegates to GameSystem for all data lookups.
  */
 
 import type { CharacterSheet, CharacterExperience } from '@ai-dm/shared';
-import { getSpellSlotsForClass, CLASS_CASTER_TYPE } from '../magic/index.js';
-import { CLASS_HIT_DIE } from '../character/rest-mechanics.js';
-import { SRD_CLASSES } from '../character/character-builder.js';
+import { getSpellSlotsForClass } from '../magic/index.js';
+import { getDnd5eSystem } from '../system/index.js';
 
 /**
- * XP thresholds per level (D&D 5e standard)
- * Index is level - 1, value is XP needed to reach that level
+ * Get the game system singleton
  */
-export const XP_THRESHOLDS: number[] = [
-  0,      // Level 1
-  300,    // Level 2
-  900,    // Level 3
-  2700,   // Level 4
-  6500,   // Level 5
-  14000,  // Level 6
-  23000,  // Level 7
-  34000,  // Level 8
-  48000,  // Level 9
-  64000,  // Level 10
-  85000,  // Level 11
-  100000, // Level 12
-  120000, // Level 13
-  140000, // Level 14
-  165000, // Level 15
-  195000, // Level 16
-  225000, // Level 17
-  265000, // Level 18
-  305000, // Level 19
-  355000, // Level 20
-];
+const getSystem = () => getDnd5eSystem();
 
 /**
- * Proficiency bonus by level
+ * XP thresholds - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().progression.xpThresholds instead
  */
-export const PROFICIENCY_BONUS_BY_LEVEL: number[] = [
-  2, 2, 2, 2, // Levels 1-4
-  3, 3, 3, 3, // Levels 5-8
-  4, 4, 4, 4, // Levels 9-12
-  5, 5, 5, 5, // Levels 13-16
-  6, 6, 6, 6, // Levels 17-20
-];
+export const XP_THRESHOLDS = new Proxy([] as number[], {
+  get: (_, prop) => {
+    if (prop === 'length') return 20;
+    const idx = Number(prop);
+    if (!isNaN(idx)) return getSystem().progression.xpThresholds[idx];
+    return undefined;
+  },
+});
 
 /**
- * XP rewards by Challenge Rating
+ * Proficiency bonus by level - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().progression.proficiencyByLevel instead
  */
-export const CR_XP_REWARDS: Record<string, number> = {
-  '0': 10,
-  '1/8': 25,
-  '1/4': 50,
-  '1/2': 100,
-  '1': 200,
-  '2': 450,
-  '3': 700,
-  '4': 1100,
-  '5': 1800,
-  '6': 2300,
-  '7': 2900,
-  '8': 3900,
-  '9': 5000,
-  '10': 5900,
-  '11': 7200,
-  '12': 8400,
-  '13': 10000,
-  '14': 11500,
-  '15': 13000,
-  '16': 15000,
-  '17': 18000,
-  '18': 20000,
-  '19': 22000,
-  '20': 25000,
-  '21': 33000,
-  '22': 41000,
-  '23': 50000,
-  '24': 62000,
-  '25': 75000,
-  '26': 90000,
-  '27': 105000,
-  '28': 120000,
-  '29': 135000,
-  '30': 155000,
-};
+export const PROFICIENCY_BONUS_BY_LEVEL = new Proxy([] as number[], {
+  get: (_, prop) => {
+    if (prop === 'length') return 20;
+    const idx = Number(prop);
+    if (!isNaN(idx)) return getSystem().progression.proficiencyByLevel[idx];
+    return undefined;
+  },
+});
+
+/**
+ * XP rewards by CR - delegates to GameSystem
+ * @deprecated Use getDnd5eSystem().progression.crXpRewards instead
+ */
+export const CR_XP_REWARDS = new Proxy({} as Record<string, number>, {
+  get: (_, key: string) => getSystem().progression.crXpRewards[key],
+  ownKeys: () => Object.keys(getSystem().progression.crXpRewards),
+  getOwnPropertyDescriptor: (_, key: string) => ({
+    enumerable: true,
+    configurable: true,
+    value: getSystem().progression.crXpRewards[key as string],
+  }),
+});
 
 /**
  * Get XP threshold for a level
  */
 export function getXPThreshold(level: number): number {
-  if (level < 1 || level > 20) {
-    return 0;
-  }
-  return XP_THRESHOLDS[level - 1] ?? 0;
+  return getSystem().progression.getXPThreshold(level);
 }
 
 /**
  * Get XP needed for next level
  */
 export function getXPForNextLevel(currentLevel: number): number {
-  if (currentLevel >= 20) {
-    return Infinity; // Max level reached
-  }
-  return XP_THRESHOLDS[currentLevel] ?? Infinity;
+  return getSystem().progression.getXPForNextLevel(currentLevel);
 }
 
 /**
  * Get proficiency bonus for a level
  */
 export function getProficiencyBonus(level: number): number {
-  if (level < 1) return 2;
-  if (level > 20) return 6;
-  return PROFICIENCY_BONUS_BY_LEVEL[level - 1] ?? 2;
+  return getSystem().progression.getProficiencyBonus(level);
 }
 
 /**
  * Get XP reward for a CR
  */
 export function getXPForCR(cr: string | number): number {
-  const crStr = String(cr);
-  return CR_XP_REWARDS[crStr] ?? 0;
+  return getSystem().progression.getXPForCR(cr);
 }
 
 /**
@@ -217,39 +176,35 @@ export function processLevelUp(
   const newProfBonus = getProficiencyBonus(newLevel);
   character.stats.proficiencyBonus = newProfBonus;
 
-  // Update spellcasting if applicable
-  let spellSlotsUpdated = false;
-  if (character.spellcasting) {
-    const classKey = Object.entries(SRD_CLASSES).find(
-      ([_, c]) => c.name === character.class
-    )?.[0];
-
-    if (classKey) {
-      const newSlots = getSpellSlotsForClass(classKey, newLevel);
-      character.spellcasting.slots.max = newSlots;
-      // Current slots stay the same (not auto-restored on level up)
-
-      // Update spell save DC and attack bonus
-      const abilityScore = character.stats.abilityScores[character.spellcasting.ability];
-      const abilityMod = Math.floor((abilityScore - 10) / 2);
-      character.spellcasting.spellSaveDC = 8 + newProfBonus + abilityMod;
-      character.spellcasting.spellAttackBonus = newProfBonus + abilityMod;
-
-      // Update max prepared spells
-      character.spellcasting.maxPreparedSpells = Math.max(1, newLevel + abilityMod);
-
-      spellSlotsUpdated = true;
-    }
-  }
-
-  // Get new class features
-  const classKey = Object.entries(SRD_CLASSES).find(
+  // Get class data from GameSystem
+  const system = getSystem();
+  const classKey = Object.entries(system.classes).find(
     ([_, c]) => c.name === character.class
   )?.[0];
 
+  // Update spellcasting if applicable
+  let spellSlotsUpdated = false;
+  if (character.spellcasting && classKey) {
+    const newSlots = getSpellSlotsForClass(classKey, newLevel);
+    character.spellcasting.slots.max = newSlots;
+    // Current slots stay the same (not auto-restored on level up)
+
+    // Update spell save DC and attack bonus
+    const abilityScore = character.stats.abilityScores[character.spellcasting.ability];
+    const abilityMod = Math.floor((abilityScore - 10) / 2);
+    character.spellcasting.spellSaveDC = 8 + newProfBonus + abilityMod;
+    character.spellcasting.spellAttackBonus = newProfBonus + abilityMod;
+
+    // Update max prepared spells
+    character.spellcasting.maxPreparedSpells = Math.max(1, newLevel + abilityMod);
+
+    spellSlotsUpdated = true;
+  }
+
+  // Get new class features
   const newFeatures: string[] = [];
   if (classKey) {
-    const classData = SRD_CLASSES[classKey];
+    const classData = system.getClass(classKey);
     if (classData) {
       const levelFeatures = classData.features.filter(f => f.level === newLevel);
       for (const feature of levelFeatures) {
