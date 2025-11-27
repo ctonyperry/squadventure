@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Saves
+.ai-dm-saves/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code local settings
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

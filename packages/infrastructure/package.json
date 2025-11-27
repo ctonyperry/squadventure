@@ -1,0 +1,27 @@
+{
+  "name": "@ai-dm/infrastructure",
+  "version": "0.1.0",
+  "description": "Infrastructure adapters for AI Dungeon Master",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-dm/shared": "workspace:*",
+    "dotenv": "^16.4.0",
+    "openai": "^4.73.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

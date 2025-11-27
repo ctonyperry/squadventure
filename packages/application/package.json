@@ -1,0 +1,27 @@
+{
+  "name": "@ai-dm/application",
+  "version": "0.1.0",
+  "description": "Application layer for AI Dungeon Master - session orchestration and game loop",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-dm/shared": "workspace:*",
+    "@ai-dm/domain": "workspace:*",
+    "@ai-dm/infrastructure": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

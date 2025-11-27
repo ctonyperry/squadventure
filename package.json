@@ -1,0 +1,21 @@
+{
+  "name": "ai-dm-con",
+  "version": "1.0.0",
+  "description": "AI Dungeon Master - A D&D tabletop game powered by AI",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @ai-dm/cli dev",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "keywords": ["dnd", "ai", "dungeon-master", "llm", "tabletop"],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@ai-dm/cli",
+  "version": "0.1.0",
+  "description": "CLI interface for AI Dungeon Master",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "ai-dm": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-dm/shared": "workspace:*",
+    "@ai-dm/domain": "workspace:*",
+    "@ai-dm/infrastructure": "workspace:*",
+    "@ai-dm/application": "workspace:*",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.6.0"
+  }
+}
